@@ -1,0 +1,552 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > PanelCoin</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.cryptochecker</a>
+</div>
+
+<h1>Coverage Summary for Class: PanelCoin (com.cryptochecker)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PanelCoin</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/80)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">PanelCoin$1</td>
+  </tr>
+  <tr>
+    <td class="name">PanelCoin$bRefreshListener</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">PanelCoin$SearchDocumentListener</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">PanelCoin$TableModel</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/25)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">PanelCoin$TableMouseListener</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/11)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">PanelCoin$TableRenderer</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/18)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/24)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/36)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/147)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.cryptochecker;
+&nbsp;
+&nbsp;import java.awt.*;
+&nbsp;import java.awt.event.*;
+&nbsp;import java.text.DecimalFormat;
+&nbsp;import java.text.DecimalFormatSymbols;
+&nbsp;import java.text.NumberFormat;
+&nbsp;import java.util.*;
+&nbsp;import javax.swing.*; 
+&nbsp;import javax.swing.event.DocumentEvent;
+&nbsp;import javax.swing.event.DocumentListener;
+&nbsp;import javax.swing.table.*;
+&nbsp;
+<b class="nc">&nbsp;public class PanelCoin {</b>
+&nbsp;    public JPanel panel;
+&nbsp;
+&nbsp;    private JTable table;
+&nbsp;    private TableRenderer renderer;
+&nbsp;    private DefaultTableCellRenderer headerRenderer;
+&nbsp;    private TableModel model;
+&nbsp;    private JScrollPane pane;
+&nbsp;
+&nbsp;    private TableRowSorter&lt;TableModel&gt; rowSorter;
+&nbsp;    private JTextField headerSearchField;
+&nbsp;
+<b class="nc">&nbsp;    private final int rowHeight = 40;</b>
+<b class="nc">&nbsp;    private final int amountHeaderButtons = 1;</b>
+<b class="nc">&nbsp;    private final int rightHeaderFilling = 50;</b>
+<b class="nc">&nbsp;    private final int headerSearchSize = 15;</b>
+<b class="nc">&nbsp;    private final Dimension searchFieldSize = new Dimension(Main.panelWidth*2, Main.panelHeight-10);</b>
+&nbsp;
+<b class="nc">&nbsp;    public PanelCoin() {</b>
+<b class="nc">&nbsp;        panel = new JPanel();</b>
+<b class="nc">&nbsp;        panel.setBackground(Color.WHITE);</b>
+<b class="nc">&nbsp;        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));</b>
+&nbsp;
+<b class="nc">&nbsp;        model = new TableModel(); // table model</b>
+&nbsp;
+&nbsp;        // rendering columns+rows
+<b class="nc">&nbsp;        renderer = new TableRenderer();</b>
+<b class="nc">&nbsp;        renderer.setHorizontalAlignment(JLabel.LEFT);</b>
+&nbsp;
+<b class="nc">&nbsp;        table = new JTable(model); // create table with data</b>
+<b class="nc">&nbsp;        table.setDefaultRenderer(Integer.class, renderer);</b>
+<b class="nc">&nbsp;        table.setDefaultRenderer(Double.class, renderer);</b>
+<b class="nc">&nbsp;        table.setDefaultRenderer(Short.class, renderer);</b>
+&nbsp;
+&nbsp;        // render header        
+<b class="nc">&nbsp;        headerRenderer = new DefaultTableCellRenderer();</b>
+<b class="nc">&nbsp;        headerRenderer.setHorizontalAlignment(JLabel.CENTER);</b>
+<b class="nc">&nbsp;        table.getTableHeader().setReorderingAllowed(false);</b>
+<b class="nc">&nbsp;        table.getTableHeader().setPreferredSize(Main.tableHeaderSize);</b>
+<b class="nc">&nbsp;        table.getTableHeader().setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, Color.GRAY));</b>
+<b class="nc">&nbsp;        table.getTableHeader().setDefaultRenderer(headerRenderer);</b>
+&nbsp;
+&nbsp;        // table settings
+<b class="nc">&nbsp;        table.setRowHeight(rowHeight);</b>
+<b class="nc">&nbsp;        table.getColumnModel().getColumn(0).setMaxWidth(50); // rank</b>
+<b class="nc">&nbsp;        table.getColumnModel().getColumn(3).setMaxWidth(100); // 1h</b>
+<b class="nc">&nbsp;        table.getColumnModel().getColumn(4).setMaxWidth(100); // 24h</b>
+<b class="nc">&nbsp;        table.getColumnModel().getColumn(5).setMaxWidth(100); // 7d</b>
+&nbsp;
+<b class="nc">&nbsp;        table.setFont(Main.tableFont);</b>
+<b class="nc">&nbsp;        table.setShowVerticalLines(false);</b>
+<b class="nc">&nbsp;        table.setIntercellSpacing(Main.tableIntercellSpacing);</b>
+<b class="nc">&nbsp;        table.setFocusable(false);</b>
+&nbsp;
+<b class="nc">&nbsp;        table.setDefaultRenderer(Object.class, renderer); // add renderer</b>
+<b class="nc">&nbsp;        table.addMouseListener(new TableMouseListener()); // Mouse Listener</b>
+&nbsp;        
+&nbsp;        // TOP HEADER
+<b class="nc">&nbsp;        JPanel headerTop = new JPanel();</b>
+<b class="nc">&nbsp;        headerTop.setBackground(Color.GRAY);</b>
+<b class="nc">&nbsp;        headerTop.setLayout(new BoxLayout(headerTop, BoxLayout.X_AXIS));</b>
+&nbsp;
+&nbsp;        // BUTTONS HEADER
+<b class="nc">&nbsp;        JPanel headerButtons = new JPanel();</b>
+<b class="nc">&nbsp;        headerButtons.setLayout(new BoxLayout(headerButtons, BoxLayout.X_AXIS));</b>
+<b class="nc">&nbsp;        headerButtons.setPreferredSize(new Dimension(Main.panelWidth*amountHeaderButtons, Main.panelHeight-1));</b>
+&nbsp;
+<b class="nc">&nbsp;        JButton bRefresh = Main.gui.getButtonTemplate(&quot;Refresh&quot;);</b>
+<b class="nc">&nbsp;        bRefresh.addActionListener(new bRefreshListener());</b>
+<b class="nc">&nbsp;        bRefresh.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1, Color.LIGHT_GRAY));</b>
+<b class="nc">&nbsp;        bRefresh.setMinimumSize(new Dimension(Main.panelWidth, Main.panelHeight+1));</b>
+&nbsp;
+<b class="nc">&nbsp;        headerButtons.add(bRefresh);</b>
+&nbsp;
+&nbsp;        // HEADER FILLING
+<b class="nc">&nbsp;        JPanel headerFilling1 = new JPanel();</b>
+<b class="nc">&nbsp;        headerFilling1.setLayout(new BorderLayout());</b>
+<b class="nc">&nbsp;        headerFilling1.setMaximumSize(new Dimension((int) Main.screenResolution.getWidth(), Main.panelHeight-1));</b>
+<b class="nc">&nbsp;        headerFilling1.setBackground(Color.GRAY);</b>
+&nbsp;
+<b class="nc">&nbsp;        JPanel headerFilling2 = new JPanel();</b>
+<b class="nc">&nbsp;        headerFilling2.setLayout(new BorderLayout());</b>
+<b class="nc">&nbsp;        headerFilling2.setMaximumSize(new Dimension(rightHeaderFilling, Main.panelHeight-1));</b>
+<b class="nc">&nbsp;        headerFilling2.setBackground(Color.GRAY);</b>
+&nbsp;
+&nbsp;        // SEARCH HEADER
+<b class="nc">&nbsp;        JPanel headerSearch = new JPanel();</b>
+<b class="nc">&nbsp;        headerSearch.setLayout(new BoxLayout(headerSearch, BoxLayout.X_AXIS));</b>
+<b class="nc">&nbsp;        headerSearch.setMaximumSize(searchFieldSize);</b>
+<b class="nc">&nbsp;        headerSearch.setBackground(Color.GRAY);</b>
+&nbsp;
+<b class="nc">&nbsp;        headerSearchField = new JTextField(&quot;&quot;, headerSearchSize);</b>
+<b class="nc">&nbsp;        headerSearch.add(headerSearchField);</b>
+&nbsp;
+&nbsp;        // sorting
+<b class="nc">&nbsp;        rowSorter = new TableRowSorter&lt;TableModel&gt;(model);</b>
+<b class="nc">&nbsp;        table.setRowSorter(rowSorter);</b>
+&nbsp;        
+<b class="nc">&nbsp;        headerSearchField.getDocument().addDocumentListener(new SearchDocumentListener());</b>
+&nbsp;
+&nbsp;        // add headers together
+<b class="nc">&nbsp;        headerTop.add(headerButtons);</b>
+<b class="nc">&nbsp;        headerTop.add(headerFilling1);</b>
+<b class="nc">&nbsp;        headerTop.add(headerSearch);</b>
+<b class="nc">&nbsp;        headerTop.add(headerFilling2);</b>
+&nbsp;
+&nbsp;        // scrolling pane, add JScrollPane to JPanel
+<b class="nc">&nbsp;        pane = new JScrollPane(table);</b>
+<b class="nc">&nbsp;        pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);</b>
+<b class="nc">&nbsp;        panel.add(headerTop);</b>
+<b class="nc">&nbsp;        panel.add(pane);</b>
+&nbsp;
+<b class="nc">&nbsp;        themeSwitch(); // select theme color</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void reCreate() {
+<b class="nc">&nbsp;        model.list = Main.gui.webData.coin;</b>
+&nbsp;
+<b class="nc">&nbsp;        Main.frame.getContentPane().revalidate();</b>
+<b class="nc">&nbsp;        Main.frame.getContentPane().repaint();</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    private class SearchDocumentListener implements DocumentListener {</b>
+&nbsp;        public void insertUpdate(DocumentEvent e) {
+<b class="nc">&nbsp;            String text = headerSearchField.getText();</b>
+&nbsp;
+<b class="nc">&nbsp;            if (text.trim().length() == 0) {</b>
+<b class="nc">&nbsp;                rowSorter.setRowFilter(null);</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                rowSorter.setRowFilter(RowFilter.regexFilter(&quot;(?i)&quot; + text));</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+&nbsp;        public void removeUpdate(DocumentEvent e) {
+<b class="nc">&nbsp;            String text = headerSearchField.getText();</b>
+&nbsp;
+<b class="nc">&nbsp;            if (text.trim().length() == 0) {</b>
+<b class="nc">&nbsp;                rowSorter.setRowFilter(null);</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                rowSorter.setRowFilter(RowFilter.regexFilter(&quot;(?i)&quot; + text));</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+&nbsp;        public void changedUpdate(DocumentEvent e) {
+<b class="nc">&nbsp;            throw new UnsupportedOperationException(&quot;Not supported yet.&quot;);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    private class TableMouseListener implements MouseListener {</b>
+&nbsp;        public void mousePressed(MouseEvent e) {
+<b class="nc">&nbsp;            if (table.getSelectedColumn() &lt; 0 || table.getSelectedRow() &lt; 0) // if nothing is selected or if user right clicks</b>
+&nbsp;                return;
+&nbsp;
+<b class="nc">&nbsp;            int columnNr = table.convertColumnIndexToModel(table.getSelectedColumn());</b>
+<b class="nc">&nbsp;            int rowNr = table.convertRowIndexToModel(table.getSelectedRow());</b>
+<b class="nc">&nbsp;            Debug.log(&quot;Table Coin, Row &quot; + rowNr + &quot;, Column &quot; + columnNr);</b>
+<b class="nc">&nbsp;            JOptionPane.showMessageDialog(Main.frame, Main.gui.webData.coin.get(rowNr).getInfo(), Main.gui.webData.coin.get(rowNr).toString(), JOptionPane.PLAIN_MESSAGE);</b>
+<b class="nc">&nbsp;            table.clearSelection();</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        public void mouseExited(MouseEvent e) { }</b>
+<b class="nc">&nbsp;        public void mouseEntered(MouseEvent ev) { }</b>
+<b class="nc">&nbsp;        public void mouseReleased(MouseEvent ev) { }</b>
+<b class="nc">&nbsp;        public void mouseClicked(MouseEvent ev) { }</b>
+&nbsp;        
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    private class TableModel extends AbstractTableModel {</b>
+&nbsp;        private static final long serialVersionUID = 1L;
+<b class="nc">&nbsp;        private String[] columnNames = {&quot;#&quot;, &quot;Name&quot;, &quot;Value&quot;, &quot;1h&quot;, &quot;24h&quot;, &quot;7d&quot;, &quot;Market Cap&quot;};</b>
+<b class="nc">&nbsp;        public ArrayList&lt;WebData.Coin&gt; list = Main.gui.webData.coin;</b>
+&nbsp;
+&nbsp;        public int getColumnCount() {
+<b class="nc">&nbsp;            return columnNames.length;</b>
+&nbsp;        }
+&nbsp;    
+&nbsp;        public int getRowCount() {
+<b class="nc">&nbsp;            return list.size();</b>
+&nbsp;        }
+&nbsp;    
+&nbsp;        public String getColumnName(int col) {
+<b class="nc">&nbsp;            return columnNames[col];</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public Class&lt;?&gt; getColumnClass(int column) { // for sorting
+<b class="nc">&nbsp;            switch (column) {</b>
+&nbsp;                case 0:
+<b class="nc">&nbsp;                    return Short.class;</b>
+&nbsp;                case 1:
+<b class="nc">&nbsp;                    return String.class;</b>
+&nbsp;                case 2:
+<b class="nc">&nbsp;                    return Double.class;</b>
+&nbsp;                case 3:
+<b class="nc">&nbsp;                    return Double.class;</b>
+&nbsp;                case 4:
+<b class="nc">&nbsp;                    return Double.class;</b>
+&nbsp;                case 5:
+<b class="nc">&nbsp;                    return Double.class;</b>
+&nbsp;                case 6:
+<b class="nc">&nbsp;                    return Integer.class;</b>
+&nbsp;                default:
+<b class="nc">&nbsp;                    return String.class;</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;        
+&nbsp;        public Object getValueAt(int row, int col) {
+<b class="nc">&nbsp;            Object value = null;</b>
+<b class="nc">&nbsp;            switch (col) {</b>
+&nbsp;                case 0:
+<b class="nc">&nbsp;                    value = list.get(row).rank;</b>
+&nbsp;                    break;
+&nbsp;                case 1:
+<b class="nc">&nbsp;                    value = list.get(row).name;</b>
+&nbsp;                    break;
+&nbsp;                case 2:
+<b class="nc">&nbsp;                    value = list.get(row).price;</b>
+&nbsp;                    break;
+&nbsp;                case 3:
+<b class="nc">&nbsp;                    value = list.get(row).percent_change_1h;</b>
+&nbsp;                    break;
+&nbsp;                case 4:
+<b class="nc">&nbsp;                    value = list.get(row).percent_change_24h;</b>
+&nbsp;                    break;
+&nbsp;                case 5:
+<b class="nc">&nbsp;                    value = list.get(row).percent_change_7d;</b>
+&nbsp;                    break;
+&nbsp;                case 6:
+<b class="nc">&nbsp;                    value = list.get(row).market_cap;</b>
+&nbsp;                    break;
+&nbsp;            }
+<b class="nc">&nbsp;            return value;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    private class TableRenderer extends DefaultTableCellRenderer {</b>
+&nbsp;        private static final long serialVersionUID = 1L;
+<b class="nc">&nbsp;        private NumberFormat nf = NumberFormat.getCurrencyInstance();</b>
+<b class="nc">&nbsp;        private DecimalFormatSymbols decimalFormatSymbols = ((DecimalFormat) nf).getDecimalFormatSymbols();</b>
+&nbsp;
+&nbsp;        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+<b class="nc">&nbsp;            super.setBackground(Main.theme.background);</b>
+<b class="nc">&nbsp;            super.setForeground(Main.theme.foreground);</b>
+&nbsp;
+<b class="nc">&nbsp;            if (column == 2) {</b>
+<b class="nc">&nbsp;                decimalFormatSymbols.setCurrencySymbol(Main.currencyChar);</b>
+<b class="nc">&nbsp;                ((DecimalFormat) nf).setDecimalFormatSymbols(decimalFormatSymbols);</b>
+<b class="nc">&nbsp;                value = nf.format(value).trim();</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (column == 3 || column == 4 || column == 5) {</b>
+<b class="nc">&nbsp;                if (0 &lt;= (Double) table.getValueAt(row,column)) {</b>
+<b class="nc">&nbsp;                    super.setForeground(Main.theme.green);</b>
+&nbsp;                }
+<b class="nc">&nbsp;                else if (0 &gt; (Double) table.getValueAt(row,column)) {</b>
+<b class="nc">&nbsp;                    super.setForeground(Main.theme.red);</b>
+&nbsp;                }
+&nbsp;
+<b class="nc">&nbsp;                value = value+&quot;%&quot;;</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (column == 6) {</b>
+<b class="nc">&nbsp;                value = NumberFormat.getNumberInstance().format(value);</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void themeSwitch() {
+<b class="nc">&nbsp;        pane.getViewport().setBackground(Main.theme.emptyBackground);</b>
+&nbsp;
+<b class="nc">&nbsp;        table.setSelectionForeground(Main.theme.selection);</b>
+<b class="nc">&nbsp;        table.setSelectionBackground(Main.theme.background);</b>
+<b class="nc">&nbsp;        table.setBackground(Main.theme.background);</b>
+&nbsp;        
+<b class="nc">&nbsp;        table.getTableHeader().setBackground(Main.theme.background);</b>
+<b class="nc">&nbsp;        headerRenderer.setForeground(Main.theme.foreground);</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    private class bRefreshListener implements ActionListener {</b>
+&nbsp;        public void actionPerformed(ActionEvent e) {
+<b class="nc">&nbsp;            Debug.log(&quot;Button Refresh Clicked&quot;);</b>
+<b class="nc">&nbsp;            new WebData.RefreshCoins();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-12-05 11:30</div>
+</div>
+</body>
+</html>

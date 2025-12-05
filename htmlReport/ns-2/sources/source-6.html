@@ -1,0 +1,828 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > PanelPortfolio</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.cryptochecker</a>
+</div>
+
+<h1>Coverage Summary for Class: PanelPortfolio (com.cryptochecker)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PanelPortfolio</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.cryptochecker;
+&nbsp;
+&nbsp;import java.awt.*;
+&nbsp;import java.awt.event.*;
+&nbsp;import java.io.*;
+&nbsp;import java.text.DecimalFormat;
+&nbsp;import java.text.DecimalFormatSymbols;
+<b class="nc">&nbsp;import java.text.NumberFormat;</b>
+<b class="nc">&nbsp;import java.util.*;</b>
+&nbsp;import javax.swing.*;
+&nbsp;import javax.swing.table.*;
+&nbsp;
+&nbsp;public class PanelPortfolio {
+<b class="nc">&nbsp;    public JPanel panel;</b>
+&nbsp;    public WebData webData;
+&nbsp;    public int nr = Main.gui.webData.portfolio_nr;
+<b class="nc">&nbsp;    public ArrayList&lt;String&gt; names = Main.gui.webData.portfolio_names;</b>
+&nbsp;
+&nbsp;    private JTable table;
+<b class="nc">&nbsp;    private TableRenderer renderer;</b>
+&nbsp;    private DefaultTableCellRenderer headerRenderer;
+&nbsp;    private TableModel model;
+&nbsp;    private JScrollPane pane;
+<b class="nc">&nbsp;    private JScrollPane contentPane;</b>
+<b class="nc">&nbsp;</b>
+&nbsp;    private final int rowHeight = 40;
+&nbsp;    private final int leftAmountHeaderButtons = 3;
+&nbsp;    private final int rightAmountHeaderButtons = 2;
+&nbsp;    private final int headerSearchSize = 14;
+&nbsp;    private final Dimension searchFieldSize = new Dimension(Main.panelWidth*2, Main.panelHeight-10);
+&nbsp;
+&nbsp;    private JPanel content;
+&nbsp;    private JPanel overview;
+&nbsp;    private JEditorPane overviewText;
+&nbsp;
+&nbsp;    public PanelPortfolio() {
+&nbsp;        panel = new JPanel();
+&nbsp;        panel.setVisible(false); // visible to false at startup
+&nbsp;        panel.setBackground(Color.WHITE);
+&nbsp;        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+&nbsp;
+&nbsp;        webData = Main.gui.webData;
+&nbsp;        model = new TableModel(); // table model
+&nbsp;
+&nbsp;        // rendering columns+rows
+&nbsp;        renderer = new TableRenderer();
+&nbsp;        renderer.setHorizontalAlignment(JLabel.LEFT);
+&nbsp;
+&nbsp;        JPanel headerTop = new JPanel();
+&nbsp;        headerTop.setBackground(Color.GRAY);
+&nbsp;        headerTop.setLayout(new BoxLayout(headerTop, BoxLayout.X_AXIS));
+&nbsp;
+&nbsp;        content = new JPanel();
+&nbsp;        content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
+&nbsp;
+&nbsp;        table = new JTable(model); // create table with data
+&nbsp;        table.setDefaultRenderer(Integer.class, renderer);
+&nbsp;        table.setDefaultRenderer(Double.class, renderer);
+&nbsp;        table.setDefaultRenderer(Short.class, renderer);
+&nbsp;
+&nbsp;        // render header        
+&nbsp;        headerRenderer = new DefaultTableCellRenderer();
+&nbsp;        headerRenderer.setHorizontalAlignment(JLabel.CENTER);
+&nbsp;        table.getTableHeader().setReorderingAllowed(false);
+&nbsp;        table.getTableHeader().setPreferredSize(Main.tableHeaderSize);
+&nbsp;        table.getTableHeader().setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.GRAY));
+&nbsp;        table.getTableHeader().setDefaultRenderer(headerRenderer);
+&nbsp;
+&nbsp;        // table settings
+&nbsp;        table.setRowHeight(rowHeight);
+&nbsp;        table.getColumnModel().getColumn(4).setMaxWidth(100); // 1h
+&nbsp;        table.getColumnModel().getColumn(5).setMaxWidth(100); // 24h
+&nbsp;        table.getColumnModel().getColumn(6).setMaxWidth(100); // 7d
+&nbsp;
+&nbsp;        table.setFont(Main.tableFont);
+&nbsp;        table.setShowHorizontalLines(true);
+&nbsp;        table.setShowVerticalLines(false);
+&nbsp;        table.setIntercellSpacing(Main.tableIntercellSpacing);
+&nbsp;        table.setFocusable(false);
+&nbsp;
+&nbsp;        table.setDefaultRenderer(Object.class, renderer);
+&nbsp;        table.addMouseListener(new TableMouseListener()); // Mouse Listener
+&nbsp;
+&nbsp;        // LEFT BUTTONS HEADER
+&nbsp;        JPanel leftHeaderButtons = new JPanel();
+&nbsp;        leftHeaderButtons.setLayout(new BoxLayout(leftHeaderButtons, BoxLayout.X_AXIS));
+&nbsp;        leftHeaderButtons.setPreferredSize(new Dimension(Main.panelWidth*leftAmountHeaderButtons, Main.panelHeight-1)); // times button
+&nbsp;
+&nbsp;        JButton bRefresh = Main.gui.getButtonTemplate(&quot;Refresh&quot;);
+&nbsp;        bRefresh.addActionListener(new bRefreshListener());
+&nbsp;        bRefresh.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1, Color.LIGHT_GRAY));
+&nbsp;        bRefresh.setMinimumSize(new Dimension(Main.panelWidth, Main.panelHeight+1));
+&nbsp;
+&nbsp;        JButton bAddCoin = Main.gui.getButtonTemplate(&quot;Add Coin&quot;);
+&nbsp;        bAddCoin.addActionListener(new bAddCoinListener());
+&nbsp;        bAddCoin.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.LIGHT_GRAY));
+&nbsp;        bAddCoin.setMinimumSize(new Dimension(Main.panelWidth, Main.panelHeight+1));
+&nbsp;
+&nbsp;        JButton bRemoveCoin = Main.gui.getButtonTemplate(&quot;Remove Coin&quot;);
+&nbsp;        bRemoveCoin.addActionListener(new bRemoveCoinListener());
+&nbsp;        bRemoveCoin.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.LIGHT_GRAY));
+&nbsp;        bRemoveCoin.setMinimumSize(new Dimension(Main.panelWidth, Main.panelHeight+1));
+&nbsp;
+&nbsp;        leftHeaderButtons.add(bRefresh);
+&nbsp;        leftHeaderButtons.add(bAddCoin);
+&nbsp;        leftHeaderButtons.add(bRemoveCoin);
+&nbsp;
+&nbsp;        // RIGHT BUTTONS HEADER
+&nbsp;        JPanel rightHeaderButtons = new JPanel();
+&nbsp;        rightHeaderButtons.setLayout(new BoxLayout(rightHeaderButtons, BoxLayout.X_AXIS));
+&nbsp;        rightHeaderButtons.setPreferredSize(new Dimension(Main.panelWidth*rightAmountHeaderButtons, Main.panelHeight-1)); // times button
+&nbsp;        
+&nbsp;        JButton bSwitchPortfolio = Main.gui.getButtonTemplate(&quot;Switch&quot;);
+&nbsp;        bSwitchPortfolio.addActionListener(new bSwitchPortfolioListener());
+&nbsp;        bSwitchPortfolio.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GRAY));
+&nbsp;        bSwitchPortfolio.setPreferredSize(new Dimension(Main.panelWidth, Main.panelHeight+1));
+&nbsp;
+&nbsp;        JButton bManagePortfolio = Main.gui.getButtonTemplate(&quot;Manage&quot;);
+&nbsp;        bManagePortfolio.addActionListener(new bManagePortfolioListener());
+&nbsp;        bManagePortfolio.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GRAY));
+&nbsp;        bManagePortfolio.setPreferredSize(new Dimension(Main.panelWidth, Main.panelHeight+1));
+&nbsp;        
+&nbsp;        rightHeaderButtons.add(bSwitchPortfolio);
+&nbsp;        rightHeaderButtons.add(bManagePortfolio);
+&nbsp;
+&nbsp;        // HEADER FILLING
+&nbsp;        JPanel headerFilling = new JPanel();
+&nbsp;        headerFilling.setLayout(new BorderLayout());
+&nbsp;        headerFilling.setMaximumSize(new Dimension((int) Main.screenResolution.getWidth(), Main.panelHeight-1));
+&nbsp;        headerFilling.setBackground(Color.GRAY);
+&nbsp;
+&nbsp;        // SEARCH HEADER
+&nbsp;        JPanel headerSearch = new JPanel();
+&nbsp;        headerSearch.setLayout(new BoxLayout(headerSearch, BoxLayout.X_AXIS));
+&nbsp;        headerSearch.setMaximumSize(searchFieldSize);
+&nbsp;        headerSearch.setBackground(Color.GRAY);
+&nbsp;
+&nbsp;        JTextField headerSearchField = new JTextField(&quot;&quot;, headerSearchSize);
+&nbsp;        headerSearch.add(headerSearchField);
+&nbsp;
+&nbsp;        // sorting
+&nbsp;        TableRowSorter&lt;TableModel&gt; rowSorter = new TableRowSorter&lt;TableModel&gt;(model);
+&nbsp;        table.setRowSorter(rowSorter);
+&nbsp;        
+&nbsp;        ArrayList&lt;RowSorter.SortKey&gt; sortKeys = new ArrayList&lt;RowSorter.SortKey&gt;(25);
+&nbsp;        sortKeys.add(new RowSorter.SortKey(2, SortOrder.DESCENDING));
+&nbsp;        rowSorter.setSortKeys(sortKeys);
+&nbsp;
+&nbsp;        /*
+&nbsp;        headerSearchField.getDocument().addDocumentListener(new DocumentListener() {
+&nbsp;            public void insertUpdate(DocumentEvent e) {
+&nbsp;                String text = headerSearchField.getText();
+&nbsp;
+&nbsp;                if (text.trim().length() == 0) {
+&nbsp;                    rowSorter.setRowFilter(null);
+&nbsp;                } else {
+&nbsp;                    rowSorter.setRowFilter(RowFilter.regexFilter(&quot;(?i)&quot; + text));
+&nbsp;                }
+&nbsp;            }
+&nbsp;
+&nbsp;            public void removeUpdate(DocumentEvent e) {
+&nbsp;                String text = headerSearchField.getText();
+&nbsp;
+&nbsp;                if (text.trim().length() == 0) {
+&nbsp;                    rowSorter.setRowFilter(null);
+&nbsp;                } else {
+&nbsp;                    rowSorter.setRowFilter(RowFilter.regexFilter(&quot;(?i)&quot; + text));
+&nbsp;                }
+&nbsp;            }
+&nbsp;
+&nbsp;            public void changedUpdate(DocumentEvent e) {
+&nbsp;                throw new UnsupportedOperationException(&quot;Not supported yet.&quot;); // to change body of generated methods, choose Tools | Templates.
+&nbsp;            }
+&nbsp;        });
+&nbsp;        */
+&nbsp;
+&nbsp;        // add headers together
+&nbsp;        headerTop.add(leftHeaderButtons);
+&nbsp;        headerTop.add(headerFilling);
+&nbsp;        //headerTop.add(headerSearch); // really needed?
+&nbsp;        //headerTop.add(headerFilling2);
+&nbsp;        headerTop.add(rightHeaderButtons);        
+&nbsp;
+&nbsp;        // overview data
+&nbsp;        overview = new JPanel();
+&nbsp;        overview.setLayout(new FlowLayout());
+&nbsp;        overview.setMaximumSize(new Dimension(10000, 0));
+&nbsp;        calculatePortfolio();
+&nbsp;        overview.add(overviewText);
+&nbsp;
+&nbsp;        // scrolling pane, add JScrollPane to JPanel
+&nbsp;        table.setPreferredScrollableViewportSize(table.getPreferredSize());
+&nbsp;        pane = new JScrollPane(table);
+&nbsp;        pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+&nbsp;        pane.setBorder(null);
+&nbsp;        pane.setViewportBorder(null);
+&nbsp;        pane.addMouseWheelListener(new contentPaneScroll());
+&nbsp;        pane.getVerticalScrollBar().setUnitIncrement(5);
+&nbsp;        pane.setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.GRAY));
+&nbsp;
+&nbsp;        content.add(overview);
+&nbsp;        content.add(pane);
+&nbsp;
+&nbsp;        contentPane = new JScrollPane(content);
+&nbsp;        //contentPane.setVerticalScrollBarPolicy(pane.VERTICAL_SCROLLBAR_ALWAYS);
+&nbsp;        contentPane.getVerticalScrollBar().setUnitIncrement(12);
+&nbsp;
+&nbsp;        panel.add(headerTop);
+&nbsp;        panel.add(contentPane);
+&nbsp;
+&nbsp;        themeSwitch(); // select theme color
+&nbsp;    }
+&nbsp;
+&nbsp;    public class contentPaneScroll implements MouseWheelListener {
+&nbsp;        public void mouseWheelMoved(MouseWheelEvent e) {
+&nbsp;            if (e.getWheelRotation() &lt; 0) {
+&nbsp;                contentPane.getVerticalScrollBar().setValue(-e.getScrollAmount()*12+contentPane.getVerticalScrollBar().getValue());
+&nbsp;            } else {
+&nbsp;                contentPane.getVerticalScrollBar().setValue(e.getScrollAmount()*12+contentPane.getVerticalScrollBar().getValue());
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void reCreate() {
+&nbsp;        model.list = Main.gui.webData.portfolio.get(nr);
+&nbsp;        table.getRowSorter().allRowsChanged();
+&nbsp;
+&nbsp;        calculatePortfolio();
+&nbsp;        table.setPreferredScrollableViewportSize(table.getPreferredSize());
+&nbsp;
+&nbsp;        Main.frame.getContentPane().add(BorderLayout.CENTER, Main.gui.panelPortfolio.panel);
+&nbsp;        Main.frame.getContentPane().revalidate();
+&nbsp;        Main.frame.getContentPane().repaint();
+&nbsp;    }
+&nbsp;
+&nbsp;    public void calculatePortfolio() {
+&nbsp;        double value = 0.0;
+&nbsp;        double gains = 0.0;
+&nbsp;        for (int i = 0; i &lt; Main.gui.webData.portfolio.get(nr).size(); ++i) {
+&nbsp;           value += Main.gui.webData.portfolio.get(nr).get(i).portfolio_value;
+&nbsp;           gains += Main.gui.webData.portfolio.get(nr).get(i).portfolio_gains;
+&nbsp;        }
+&nbsp;        
+&nbsp;        DecimalFormat overviewFormat = new DecimalFormat(&quot;#,###.##&quot;);
+&nbsp;
+&nbsp;        NumberFormat decimalFormat = NumberFormat.getPercentInstance();
+&nbsp;        decimalFormat.setMinimumFractionDigits(2);
+&nbsp;
+&nbsp;        String htmlFont = &quot;&lt;font color=\&quot;rgb(&quot;+Main.theme.foreground.getRed()+&quot;, &quot;+Main.theme.foreground.getGreen()+&quot;, &quot;+Main.theme.foreground.getBlue()+&quot;)\&quot;&gt;&quot;;
+&nbsp;        String htmlGreen = &quot;&lt;font color=\&quot;rgb(&quot;+Main.theme.green.getRed()+&quot;, &quot;+Main.theme.green.getGreen()+&quot;, &quot;+Main.theme.green.getBlue()+&quot;)\&quot;&gt;&quot;;
+&nbsp;        String htmlRed = &quot;&lt;font color=\&quot;rgb(&quot;+Main.theme.red.getRed()+&quot;, &quot;+Main.theme.red.getGreen()+&quot;, &quot;+Main.theme.red.getBlue()+&quot;)\&quot;&gt;&quot;;
+&nbsp;
+&nbsp;        String htmlBottom;
+&nbsp;
+&nbsp;        if (gains &gt;= 0) { htmlBottom = htmlGreen; }
+&nbsp;        else { htmlBottom = htmlRed; }
+&nbsp;
+&nbsp;        String percentGains;
+&nbsp;        if (value == 0) { percentGains = &quot;0.00%&quot;; }
+&nbsp;        else { percentGains = decimalFormat.format(gains/(value-gains)); }
+&nbsp;
+&nbsp;        String overviewHTML = htmlFont+&quot;&lt;font size=\&quot;6\&quot;&gt;&lt;font face=\&quot;helvetica\&quot;&gt;&quot;+&quot;&lt;center&gt;&quot;
+&nbsp;        +&quot;{ &quot;+overviewFormat.format(value)+&quot; }&lt;br&gt;&quot;
+&nbsp;        +&quot;&lt;font size=\&quot;5\&quot;&gt;&lt;b&gt;&quot;+htmlBottom+overviewFormat.format(gains)+&quot; (&quot;+percentGains+&quot;)&quot;+&quot;&lt;/b&gt;&lt;/center&gt;&quot;;
+&nbsp;
+&nbsp;        // set text
+&nbsp;        if (overviewText != null) {
+&nbsp;            overviewText.setText(overviewHTML);
+&nbsp;        } else {
+&nbsp;            overviewText = new JEditorPane(&quot;text/html&quot;, overviewHTML);
+&nbsp;            overviewText.setEditable(false);
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    private class TableMouseListener implements MouseListener {
+&nbsp;        public void mousePressed(MouseEvent e) {
+&nbsp;            if (table.getSelectedColumn() &lt; 0 || table.getSelectedRow() &lt; 0) // if nothing is selected or if user right clicks
+&nbsp;                return;
+&nbsp;
+&nbsp;                int columnNr = table.convertColumnIndexToModel(table.getSelectedColumn());
+&nbsp;                int rowNr = table.convertRowIndexToModel(table.getSelectedRow());
+&nbsp;                Debug.log(&quot;Table Portfolio &quot; + nr + &quot;, Row &quot; + rowNr + &quot;, Column &quot; + columnNr);
+&nbsp;                JOptionPane.showMessageDialog(Main.frame, Main.gui.webData.portfolio.get(nr).get(rowNr).getPortfolio(), Main.gui.webData.portfolio.get(nr).get(rowNr).toString(), JOptionPane.PLAIN_MESSAGE);
+&nbsp;                table.clearSelection();
+&nbsp;        }
+&nbsp;
+&nbsp;        public void mouseExited(MouseEvent e) { }
+&nbsp;        public void mouseEntered(MouseEvent ev) { }
+&nbsp;        public void mouseReleased(MouseEvent ev) { }
+&nbsp;        public void mouseClicked(MouseEvent ev) { }
+&nbsp;        
+&nbsp;    }
+&nbsp;
+&nbsp;    private class TableModel extends AbstractTableModel {
+&nbsp;        private static final long serialVersionUID = 1L;
+&nbsp;        private String[] columnNames = {&quot;Name&quot;, &quot;Coin Value&quot;, &quot;Portfolio Value&quot;, &quot;Gains / Losses&quot;, &quot;1h&quot;, &quot;24h&quot;, &quot;7d&quot;};
+&nbsp;        private ArrayList&lt;WebData.Coin&gt; list = webData.portfolio.get(nr); // PORTFOLIO
+&nbsp;
+&nbsp;        public int getColumnCount() {
+&nbsp;            return columnNames.length;
+&nbsp;        }
+&nbsp;    
+&nbsp;        public int getRowCount() {
+&nbsp;            return list.size();
+&nbsp;        }
+&nbsp;    
+&nbsp;        public String getColumnName(int col) {
+&nbsp;            return columnNames[col];
+&nbsp;        }
+&nbsp;
+&nbsp;        public Class&lt;?&gt; getColumnClass(int column) { // for sorting
+&nbsp;            switch (column) {
+&nbsp;                case 0:
+&nbsp;                    return String.class;
+&nbsp;                case 1:
+&nbsp;                    return Double.class;
+&nbsp;                case 2:
+&nbsp;                    return Double.class;
+&nbsp;                case 3:
+&nbsp;                    return Double.class;
+&nbsp;                case 4:
+&nbsp;                    return Double.class;
+&nbsp;                case 5:
+&nbsp;                    return Double.class;
+&nbsp;                case 6:
+&nbsp;                    return Double.class;
+&nbsp;                default:
+&nbsp;                    return String.class;
+&nbsp;            }
+&nbsp;        }
+&nbsp;        
+&nbsp;        public Object getValueAt(int row, int col) {
+&nbsp;            Object value = null;
+&nbsp;            switch (col) {
+&nbsp;                case 0:
+&nbsp;                    value = list.get(row).name;
+&nbsp;                    break;
+&nbsp;                case 1:
+&nbsp;                    value = list.get(row).price;
+&nbsp;                    break;
+&nbsp;                case 2:
+&nbsp;                    value = list.get(row).portfolio_value;
+&nbsp;                    break;
+&nbsp;                case 3:
+&nbsp;                    value = list.get(row).portfolio_gains;
+&nbsp;                    break;
+&nbsp;                case 4:
+&nbsp;                    value = list.get(row).percent_change_1h;
+&nbsp;                    break;
+&nbsp;                case 5:
+&nbsp;                    value = list.get(row).percent_change_24h;
+&nbsp;                    break;
+&nbsp;                case 6:
+&nbsp;                    value = list.get(row).percent_change_7d;
+&nbsp;                    break;
+&nbsp;            }
+&nbsp;            return value;
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    private class TableRenderer extends DefaultTableCellRenderer {
+&nbsp;        private static final long serialVersionUID = 1L;
+&nbsp;        private NumberFormat nf = NumberFormat.getCurrencyInstance();
+&nbsp;        private DecimalFormatSymbols decimalFormatSymbols = ((DecimalFormat) nf).getDecimalFormatSymbols();
+&nbsp;
+&nbsp;        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+&nbsp;            super.setBackground(Main.theme.background);
+&nbsp;            super.setForeground(Main.theme.foreground);
+&nbsp;
+&nbsp;            if (column == 1 || column == 2) {
+&nbsp;                decimalFormatSymbols.setCurrencySymbol(Main.currencyChar);
+&nbsp;                ((DecimalFormat) nf).setDecimalFormatSymbols(decimalFormatSymbols);
+&nbsp;                
+&nbsp;                value = nf.format(value).trim();
+&nbsp;            }
+&nbsp;
+&nbsp;            if (column == 3) {
+&nbsp;                if (0 &lt;= (Double) table.getValueAt(row,column)) {
+&nbsp;                    super.setForeground(Main.theme.green);
+&nbsp;                }
+&nbsp;                else if (0 &gt; (Double) table.getValueAt(row,column)) {
+&nbsp;                    super.setForeground(Main.theme.red);
+&nbsp;                }
+&nbsp;
+&nbsp;                value = nf.format(value).trim();
+&nbsp;            }
+&nbsp;
+&nbsp;            if (column == 4 || column == 5 || column == 6) {
+&nbsp;                if (0 &lt;= (Double) table.getValueAt(row,column)) {
+&nbsp;                    super.setForeground(Main.theme.green);
+&nbsp;                }
+&nbsp;                else if (0 &gt; (Double) table.getValueAt(row,column)) {
+&nbsp;                    super.setForeground(Main.theme.red);
+&nbsp;                }
+&nbsp;
+&nbsp;                value = value+&quot;%&quot;;
+&nbsp;            }
+&nbsp;
+&nbsp;            return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void themeSwitch() {
+&nbsp;        pane.getViewport().setBackground(Main.theme.emptyBackground);
+&nbsp;
+&nbsp;        overview.setBackground(Main.theme.background);
+&nbsp;        overviewText.setBackground(Main.theme.background);
+&nbsp;        overviewText.setForeground(Main.theme.foreground);
+&nbsp;
+&nbsp;        table.setSelectionForeground(Main.theme.selection);
+&nbsp;        table.setSelectionBackground(Main.theme.background);
+&nbsp;
+&nbsp;        table.setBackground(Main.theme.background);
+&nbsp;        table.getTableHeader().setForeground(Main.theme.foreground);
+&nbsp;        table.getTableHeader().setBackground(Main.theme.background);
+&nbsp;        
+&nbsp;        table.getTableHeader().setBackground(Main.theme.background);
+&nbsp;        headerRenderer.setForeground(Main.theme.foreground);
+&nbsp;
+&nbsp;        calculatePortfolio();
+&nbsp;    }
+&nbsp;
+&nbsp;    private class bRefreshListener implements ActionListener {
+&nbsp;        public void actionPerformed(ActionEvent e) {
+&nbsp;            Debug.log(&quot;Button Refresh Clicked&quot;);
+&nbsp;            new WebData.RefreshCoins();
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    private class bAddCoinListener implements ActionListener {
+&nbsp;        public void actionPerformed(ActionEvent e) {
+&nbsp;            Debug.log(&quot;Button Add Coin Clicked&quot;);
+&nbsp;
+&nbsp;            Object[] options = webData.coin.toArray();
+&nbsp;
+&nbsp;            // SELECTING cryptocurrency
+&nbsp;            Object selectedValue = JOptionPane.showInputDialog(Main.frame, &quot;Select cryptocurrency to add&quot;, &quot;Add To Portfolio&quot;, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+&nbsp;            if (selectedValue == null) {
+&nbsp;                Debug.log(&quot;-- cancel&quot;);
+&nbsp;                return;
+&nbsp;            } else if (findPortfolioName(selectedValue.toString())) {
+&nbsp;                Debug.log(&quot;-- &quot;+selectedValue+&quot; already exists, cancelling&quot;);
+&nbsp;                JOptionPane.showMessageDialog(Main.frame, selectedValue+&quot; already exists!&quot;);
+&nbsp;                return;
+&nbsp;            } else {
+&nbsp;                Debug.log(&quot;-- &quot;+selectedValue);
+&nbsp;            }
+&nbsp;            // convert to WebData.Coin
+&nbsp;            WebData.Coin shallowValue = (WebData.Coin) selectedValue;
+&nbsp;            WebData.Coin value = (WebData.Coin) shallowValue.copy();
+&nbsp;
+&nbsp;
+&nbsp;            // SELECTING amounts to cryptocurrency
+&nbsp;            String input = JOptionPane.showInputDialog(Main.frame, &quot;Amounts of &quot; + value, &quot;Add To Portfolio&quot;, JOptionPane.PLAIN_MESSAGE);
+&nbsp;            if (input == null) { // pressed &quot;cancel button&quot;
+&nbsp;                Debug.log(&quot;-- cancel&quot;);
+&nbsp;                return;
+&nbsp;            }
+&nbsp;
+&nbsp;            double amounts;
+&nbsp;            try {
+&nbsp;                amounts = Double.parseDouble(input);
+&nbsp;                value.portfolio_amount = amounts;
+&nbsp;                Debug.log(&quot;-- &quot;+amounts);
+&nbsp;            } catch(Exception ex) {
+&nbsp;                Debug.log(&quot;-- cancel - incorrect format&quot;);
+&nbsp;                JOptionPane.showMessageDialog(Main.frame, &quot;Incorrect format!\nYou can only write a number with or without decimal\nexample: 51.2&quot;);
+&nbsp;                return;
+&nbsp;            }
+&nbsp;
+&nbsp;            // SELECTING per price/total price
+&nbsp;            Object[] paneSelectionOptions = { &quot;Value per piece&quot;, &quot;Total value&quot;, &quot;Retrieve current value&quot;};
+&nbsp;            int paneSelection = JOptionPane.showOptionDialog(Main.frame, &quot;How do you want to enter the start value?&quot;, &quot;Start Value&quot;, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, paneSelectionOptions, paneSelectionOptions[1]);
+&nbsp;            Debug.log(&quot;-- menu selection &quot; +paneSelection);
+&nbsp;            switch (paneSelection) {
+&nbsp;                case 0:
+&nbsp;                    // SELECTING price for cryptocurrency (optional)
+&nbsp;                    input = JOptionPane.showInputDialog(Main.frame, &quot;Price per &quot; + value, &quot;Add To Portfolio&quot;, JOptionPane.PLAIN_MESSAGE);
+&nbsp;                    if (input == null) { // pressed &quot;cancel button&quot;
+&nbsp;                        Debug.log(&quot;-- cancel&quot;);
+&nbsp;                        return;
+&nbsp;                    }
+&nbsp;
+&nbsp;                    double price;
+&nbsp;                    try {
+&nbsp;                        price = Double.parseDouble(input);
+&nbsp;                        value.portfolio_price_start = price;
+&nbsp;                        Debug.log(&quot;-- &quot;+price);
+&nbsp;                    } catch(Exception ex) {
+&nbsp;                        value.portfolio_price_start = value.price;
+&nbsp;                        Debug.log(&quot;-- incorrect format, getting current price &quot; + value.price);
+&nbsp;                    }
+&nbsp;
+&nbsp;                    value.portfolio_value = value.portfolio_price * value.portfolio_amount;
+&nbsp;                    value.portfolio_value_start = value.portfolio_price_start * value.portfolio_amount;
+&nbsp;                    break;
+&nbsp;                case 1:
+&nbsp;                    // SELECT total price
+&nbsp;                    input = JOptionPane.showInputDialog(Main.frame, &quot;Total value of &quot; + value, &quot;Add To Portfolio&quot;, JOptionPane.PLAIN_MESSAGE);
+&nbsp;                    if (input == null) { // pressed &quot;cancel button&quot;
+&nbsp;                        Debug.log(&quot;-- cancel&quot;);
+&nbsp;                        return;
+&nbsp;                    }
+&nbsp;
+&nbsp;                    double valueStart;
+&nbsp;                    try {
+&nbsp;                        valueStart = Double.parseDouble(input);
+&nbsp;                        value.portfolio_value = valueStart;
+&nbsp;                        value.portfolio_value_start = value.portfolio_value;
+&nbsp;
+&nbsp;                        value.portfolio_price_start = valueStart/value.portfolio_amount;
+&nbsp;                        Debug.log(&quot;-- &quot;+value.portfolio_price_start);
+&nbsp;                    } catch(Exception ex) {
+&nbsp;                        value.portfolio_price_start = value.price;
+&nbsp;                        Debug.log(&quot;-- incorrect format, getting current price &quot; + value.portfolio_price_start);
+&nbsp;
+&nbsp;                        value.portfolio_value = value.portfolio_price_start * value.portfolio_amount;
+&nbsp;                        value.portfolio_value_start = value.portfolio_value;
+&nbsp;                    }
+&nbsp;
+&nbsp;                    break;
+&nbsp;                case 2:
+&nbsp;                    // SELECT get current price
+&nbsp;                    value.portfolio_price_start = value.price;
+&nbsp;                    Debug.log(&quot;-- getting current price &quot; + value.price);
+&nbsp;                    value.portfolio_value_start = value.portfolio_price_start * value.portfolio_amount;
+&nbsp;                    break;
+&nbsp;                default:
+&nbsp;                    Debug.log(&quot;-- cancel&quot;);
+&nbsp;                    return;
+&nbsp;            }
+&nbsp;
+&nbsp;
+&nbsp;            value.portfolio_currency = Main.currency;
+&nbsp;
+&nbsp;
+&nbsp;            // adding object to arraylist
+&nbsp;            webData.portfolio.get(nr).add((WebData.Coin) value);
+&nbsp;            Debug.log(&quot;Portfolio &quot; + nr + &quot; Added &quot; + value);
+&nbsp;
+&nbsp;            // serialize portfolio and re-setup the table
+&nbsp;            serializePortfolio();
+&nbsp;            refreshPortfolio();
+&nbsp;            reCreate();
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    private class bRemoveCoinListener implements ActionListener {
+&nbsp;        public void actionPerformed(ActionEvent e) {
+&nbsp;            Debug.log(&quot;Button Remove Coin Clicked&quot;);
+&nbsp;
+&nbsp;            try {
+&nbsp;                Object[] options = webData.portfolio.get(nr).toArray();
+&nbsp;                Object value = JOptionPane.showInputDialog(Main.frame, &quot;Select cryptocurrency to remove&quot;, &quot;Remove From Portfolio&quot;, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+&nbsp;    
+&nbsp;                for (int i = 0; i &lt; webData.portfolio.get(nr).size(); ++i) {
+&nbsp;                    if (webData.portfolio.get(nr).get(i) == value) {
+&nbsp;                        webData.portfolio.get(nr).remove(i);
+&nbsp;                        Debug.log(&quot;Portfolio &quot; + nr + &quot; Removed &quot; + value);
+&nbsp;                        break; // can only be one name in each
+&nbsp;                    }
+&nbsp;                }
+&nbsp;    
+&nbsp;                serializePortfolio();
+&nbsp;                reCreate();
+&nbsp;            } catch(Exception ex) {
+&nbsp;                Debug.log(&quot;Portfolio Nothing Left To Remove&quot;);
+&nbsp;                JOptionPane.showMessageDialog(Main.frame, &quot;Nothing Left To Remove&quot;);
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    private class bSwitchPortfolioListener implements ActionListener {
+&nbsp;        public void actionPerformed(ActionEvent e) {
+&nbsp;            Debug.log(&quot;Button Switch Portfolio Clicked&quot;);
+&nbsp;            Object[] portfolios = names.toArray();
+&nbsp;            Object selectedValue = JOptionPane.showInputDialog(Main.frame, &quot;Select from the list&quot;, &quot;Switch To Portfolio&quot;, JOptionPane.PLAIN_MESSAGE, null, portfolios, names.get(nr));
+&nbsp;            
+&nbsp;            if (selectedValue != null) {
+&nbsp;                String value = (String) selectedValue;
+&nbsp;                Debug.log(&quot;Switching To Portfolio &quot; + value);
+&nbsp;                for (int i = 0; i &lt; names.size(); ++i) {
+&nbsp;                    if (value.equals(names.get(i))) {
+&nbsp;                        nr = i;
+&nbsp;                    }
+&nbsp;                }
+&nbsp;                
+&nbsp;                serializePortfolio();
+&nbsp;                refreshPortfolio();
+&nbsp;                reCreate();
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    private class bManagePortfolioListener implements ActionListener {
+&nbsp;        public void actionPerformed(ActionEvent e) {
+&nbsp;            Debug.log(&quot;Button Manage Portfolio Clicked&quot;);
+&nbsp;            
+&nbsp;            Object[] options = {&quot;Rename Current&quot;, &quot;Delete Current&quot;, &quot;New Portfolio&quot;};
+&nbsp;
+&nbsp;            int selectedValue = JOptionPane.showOptionDialog(Main.frame, &quot;Select action for the current portfolio&quot;, &quot;Manage Portfolio&quot;, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options);
+&nbsp;            switch (selectedValue) {
+&nbsp;                case 0:
+&nbsp;                    Debug.log(&quot;Renaming Portfolio &quot; + nr);
+&nbsp;                    String message = JOptionPane.showInputDialog(Main.frame, &quot;Rename current portfolio&quot;, names.get(nr));
+&nbsp;
+&nbsp;                    if (message != null) {
+&nbsp;                        for (int i = 0; i &lt; names.size(); ++i) {
+&nbsp;                            if (names.get(i).equals(message)) {
+&nbsp;                                if (i != nr) {
+&nbsp;                                    Debug.log(&quot;Name already existst, cancelling..&quot;);
+&nbsp;                                    JOptionPane.showMessageDialog(Main.frame, &quot;Name already exists!&quot;);
+&nbsp;                                    return;
+&nbsp;                                }
+&nbsp;                            }
+&nbsp;                        }
+&nbsp;
+&nbsp;                        names.set(nr, message);
+&nbsp;                        Debug.log(&quot;-- renamed to &quot; + message);
+&nbsp;                    }
+&nbsp;                    break;
+&nbsp;                case 1:
+&nbsp;                    Debug.log(&quot;Deleting Portfolio &quot; + nr);
+&nbsp;                    if (webData.portfolio.size() == 1) {
+&nbsp;                        Debug.log(&quot;-- cancel&quot;);
+&nbsp;                        JOptionPane.showMessageDialog(Main.frame, &quot;You must have at least one portfolio!&quot;);
+&nbsp;                        return;
+&nbsp;                    }
+&nbsp;                    webData.portfolio.remove(nr);
+&nbsp;                    names.remove(nr);
+&nbsp;                    
+&nbsp;                    nr = 0;
+&nbsp;                    Debug.log(&quot;-- completed&quot;);
+&nbsp;                    break;
+&nbsp;                case 2:
+&nbsp;                    Debug.log(&quot;New Portfolio&quot;);
+&nbsp;                    webData.portfolio.add(new ArrayList&lt;WebData.Coin&gt;());
+&nbsp;                    names.add(new String(&quot;Portfolio &quot; + webData.portfolio.size()));
+&nbsp;
+&nbsp;                    for (int i = 0; i &lt; names.size(); ++i) {
+&nbsp;                        if (names.get(names.size()-1).equals(names.get(i))) {
+&nbsp;                            if (names.size()-1 != i) names.set(names.size()-1, names.get(names.size()-1)+&quot; &quot;);
+&nbsp;                        }
+&nbsp;                    }
+&nbsp;
+&nbsp;                    nr = webData.portfolio.size()-1;
+&nbsp;                    Debug.log(&quot;-- completed&quot;);
+&nbsp;                    break;
+&nbsp;            }
+&nbsp;
+&nbsp;            if (selectedValue == 1 || selectedValue == 2) {
+&nbsp;                serializePortfolio();
+&nbsp;                refreshPortfolio();
+&nbsp;                reCreate();
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void serializePortfolio() {
+&nbsp;        try {
+&nbsp;            FileOutputStream file = new FileOutputStream(Main.portfolioSerLocation);
+&nbsp;            BufferedOutputStream buffer = new BufferedOutputStream(file);
+&nbsp;            ObjectOutputStream out = new ObjectOutputStream(buffer);
+&nbsp;            out.writeObject(webData.portfolio);
+&nbsp;            out.writeObject(names);
+&nbsp;            out.writeObject(nr);
+&nbsp;            out.close();
+&nbsp;            Debug.log(&quot;Serialized Portfolio To &quot; + Main.portfolioSerLocation);
+&nbsp;
+&nbsp;        } catch(Exception ex) {
+&nbsp;            Debug.log(&quot;EXCEPTION: PanelPortfolio.java - serializePortfolio()&quot;);
+&nbsp;            ex.printStackTrace();
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    private boolean findPortfolioName(String name) {
+&nbsp;        for (int i = 0; i &lt; webData.portfolio.get(nr).size(); ++i) {
+&nbsp;            if (webData.portfolio.get(nr).get(i).name.equals(name)) {
+&nbsp;                return true;
+&nbsp;            }
+&nbsp;        }
+&nbsp;        
+&nbsp;        return false;
+&nbsp;    }
+&nbsp;
+&nbsp;    private WebData.Coin getPortfolioName(String name) {
+&nbsp;        for (int i = 0; i &lt; webData.coin.size(); ++i) {
+&nbsp;            if (webData.coin.get(i).name.equals(name)) {
+&nbsp;                return webData.coin.get(i);
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+&nbsp;        return webData.getCoin();
+&nbsp;    }
+&nbsp;
+&nbsp;    public void refreshPortfolio() {
+&nbsp;        for (int i = 0; i &lt; webData.portfolio.get(nr).size(); ++i) {
+&nbsp;            WebData.Coin coin = getPortfolioName(webData.portfolio.get(nr).get(i).name);
+&nbsp;
+&nbsp;            if (Main.currency.equals(webData.portfolio.get(nr).get(i).portfolio_currency)) {
+&nbsp;                webData.portfolio.get(nr).get(i).portfolio_price = webData.portfolio.get(nr).get(i).portfolio_price_start;
+&nbsp;                webData.portfolio.get(nr).get(i).portfolio_value = coin.price * webData.portfolio.get(nr).get(i).portfolio_amount;
+&nbsp;                webData.portfolio.get(nr).get(i).portfolio_gains = webData.portfolio.get(nr).get(i).portfolio_value - webData.portfolio.get(nr).get(i).portfolio_value_start;
+&nbsp;            } else {
+&nbsp;                webData.portfolio.get(nr).get(i).portfolio_price *= (coin.price / webData.portfolio.get(nr).get(i).price); // convert portfolio_start_price to new currency
+&nbsp;                webData.portfolio.get(nr).get(i).portfolio_value = coin.price * webData.portfolio.get(nr).get(i).portfolio_amount; // calculate current value of portfolio
+&nbsp;                webData.portfolio.get(nr).get(i).portfolio_gains = webData.portfolio.get(nr).get(i).portfolio_value - (webData.portfolio.get(nr).get(i).portfolio_price * webData.portfolio.get(nr).get(i).portfolio_amount); // calculate gains
+&nbsp;            }
+&nbsp;
+&nbsp;            webData.portfolio.get(nr).get(i).rank = coin.rank;
+&nbsp;            webData.portfolio.get(nr).get(i).price = coin.price;
+&nbsp;            //webData.portfolio.get(nr).get(i).price_btc = coin.price_btc;
+&nbsp;            webData.portfolio.get(nr).get(i)._24h_volume = coin._24h_volume;
+&nbsp;            webData.portfolio.get(nr).get(i).market_cap = coin.market_cap;
+&nbsp;            webData.portfolio.get(nr).get(i).available_supply = coin.available_supply;
+&nbsp;            webData.portfolio.get(nr).get(i).total_supply = coin.total_supply;
+&nbsp;            webData.portfolio.get(nr).get(i).max_supply = coin.max_supply;
+&nbsp;            webData.portfolio.get(nr).get(i).percent_change_1h = coin.percent_change_1h;
+&nbsp;            webData.portfolio.get(nr).get(i).percent_change_24h = coin.percent_change_24h;
+&nbsp;            webData.portfolio.get(nr).get(i).percent_change_7d = coin.percent_change_7d;
+&nbsp;            webData.portfolio.get(nr).get(i).last_updated = coin.last_updated;
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-12-05 11:30</div>
+</div>
+</body>
+</html>

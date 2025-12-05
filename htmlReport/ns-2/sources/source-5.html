@@ -1,0 +1,813 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > PanelConverter</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.cryptochecker</a>
+</div>
+
+<h1>Coverage Summary for Class: PanelConverter (com.cryptochecker)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PanelConverter</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/40)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/241)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">PanelConverter$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/14)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">PanelConverter$bGlobalListener</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">PanelConverter$bRefreshListener</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">PanelConverter$bSwitchListener</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/21)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">PanelConverter$buttonCurrencyListener</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/18)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/34)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/21)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/66)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/316)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.cryptochecker;
+&nbsp;
+&nbsp;import java.awt.*;
+&nbsp;import java.awt.event.*;
+&nbsp;import java.io.*;
+&nbsp;import java.text.DecimalFormat;
+&nbsp;import javax.swing.*;
+&nbsp;import javax.swing.event.DocumentEvent;
+&nbsp;import javax.swing.event.DocumentListener;
+&nbsp;
+<b class="nc">&nbsp;public class PanelConverter {</b>
+&nbsp;    public JPanel panel;
+&nbsp;
+<b class="nc">&nbsp;    private final int amountHeaderButtons = 2;</b>
+<b class="nc">&nbsp;    private final int contentWidth = 250;</b>
+<b class="nc">&nbsp;    private final int contentHeight = 45;</b>
+&nbsp;
+&nbsp;    private JPanel contentFilling1;
+&nbsp;    private JPanel contentFilling2;
+&nbsp;    private JPanel contentTop;
+&nbsp;    private JPanel contentBottom;
+&nbsp;    private JPanel middleBottom;
+&nbsp;
+&nbsp;    private JButton buttonCurrency1;
+&nbsp;    private JButton buttonCurrency2;
+&nbsp;
+&nbsp;    private double priceCurrency1;
+&nbsp;    private double priceCurrency2;
+&nbsp;
+&nbsp;    private JTextField fieldCurrency1;
+&nbsp;    private JTextField fieldCurrency2;
+&nbsp;
+&nbsp;    private String infoCurrency1;
+&nbsp;    private String infoCurrency2;
+&nbsp;
+&nbsp;    private JPanel overview;
+&nbsp;    private JEditorPane overviewText;
+&nbsp;
+&nbsp;    private JEditorPane textBox1;
+&nbsp;    private JEditorPane textBox2;
+<b class="nc">&nbsp;    private final Font textBoxFont = new Font(&quot;Helvetica&quot;, Font.PLAIN, 14);</b>
+&nbsp;
+<b class="nc">&nbsp;    private DecimalFormat df1 = new DecimalFormat(&quot;#.##&quot;);</b>
+<b class="nc">&nbsp;    private DecimalFormat df2 = new DecimalFormat(&quot;#.###&quot;);</b>
+<b class="nc">&nbsp;    private DecimalFormat df3 = new DecimalFormat(&quot;#.####&quot;);</b>
+<b class="nc">&nbsp;    private DecimalFormat df4 = new DecimalFormat(&quot;#.#####&quot;);</b>
+<b class="nc">&nbsp;    private DecimalFormat df5 = new DecimalFormat(&quot;#.######&quot;);</b>
+<b class="nc">&nbsp;    private DecimalFormat df6 = new DecimalFormat(&quot;#.############&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;    public PanelConverter() {</b>
+<b class="nc">&nbsp;        panel = new JPanel();</b>
+<b class="nc">&nbsp;        panel.setVisible(false);</b>
+<b class="nc">&nbsp;        panel.setBackground(Color.WHITE);</b>
+<b class="nc">&nbsp;        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));</b>
+&nbsp;
+&nbsp;        // overview data
+<b class="nc">&nbsp;        overview = new JPanel();</b>
+<b class="nc">&nbsp;        overview.setLayout(new FlowLayout());</b>
+<b class="nc">&nbsp;        overview.setBackground(Color.WHITE);</b>
+<b class="nc">&nbsp;        overview.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));</b>
+<b class="nc">&nbsp;        calculateGlobal();</b>
+<b class="nc">&nbsp;        overview.add(overviewText);</b>
+&nbsp;
+&nbsp;        // overview-content filling
+<b class="nc">&nbsp;        contentFilling1 = new JPanel();</b>
+<b class="nc">&nbsp;        contentFilling1.setLayout(new BorderLayout());</b>
+<b class="nc">&nbsp;        contentFilling1.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1, Color.GRAY));</b>
+&nbsp;
+<b class="nc">&nbsp;        contentFilling2 = new JPanel();</b>
+<b class="nc">&nbsp;        contentFilling2.setLayout(new BorderLayout());</b>
+<b class="nc">&nbsp;        contentFilling2.setBorder(BorderFactory.createMatteBorder(0, 1, 1, 1, Color.GRAY));</b>
+&nbsp;
+&nbsp;        // CONTENT
+<b class="nc">&nbsp;        contentTop = new JPanel();</b>
+<b class="nc">&nbsp;        contentTop.setLayout(new FlowLayout());</b>
+<b class="nc">&nbsp;        contentTop.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1, Color.GRAY));</b>
+&nbsp;
+<b class="nc">&nbsp;        contentBottom = new JPanel();</b>
+<b class="nc">&nbsp;        contentBottom.setLayout(new FlowLayout());</b>
+<b class="nc">&nbsp;        contentBottom.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1, Color.GRAY));</b>
+&nbsp;
+&nbsp;        // CONTENT TOP - LEFT
+<b class="nc">&nbsp;        JPanel topLeft = new JPanel();</b>
+<b class="nc">&nbsp;        topLeft.setLayout(new BoxLayout(topLeft, BoxLayout.Y_AXIS));</b>
+<b class="nc">&nbsp;        topLeft.setPreferredSize(new Dimension(contentWidth, contentHeight));</b>
+<b class="nc">&nbsp;        topLeft.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));</b>
+&nbsp;
+<b class="nc">&nbsp;        JPanel topLeft1 = new JPanel();</b>
+<b class="nc">&nbsp;        topLeft1.setLayout(new BorderLayout());</b>
+&nbsp;
+<b class="nc">&nbsp;        buttonCurrency1 = Main.gui.getButtonTemplate(&quot;&quot;);</b>
+<b class="nc">&nbsp;        buttonCurrency1.addActionListener(new buttonCurrencyListener(1));</b>
+<b class="nc">&nbsp;        buttonCurrency1.setBorder(BorderFactory.createEmptyBorder());</b>
+&nbsp;
+<b class="nc">&nbsp;        topLeft1.add(buttonCurrency1);</b>
+&nbsp;
+<b class="nc">&nbsp;        JPanel topLeft2 = new JPanel();</b>
+<b class="nc">&nbsp;        topLeft2.setLayout(new BoxLayout(topLeft2, BoxLayout.Y_AXIS));</b>
+&nbsp;
+<b class="nc">&nbsp;        fieldCurrency1 = new JTextField(&quot;&quot;);</b>
+<b class="nc">&nbsp;        fieldCurrency1.setHorizontalAlignment(JTextField.CENTER);</b>
+<b class="nc">&nbsp;        fieldCurrency1.setMinimumSize(new Dimension(contentWidth, contentHeight/2));</b>
+<b class="nc">&nbsp;        fieldCurrency1.setMaximumSize(new Dimension(contentWidth, contentHeight/2));</b>
+<b class="nc">&nbsp;        fieldCurrency1.setBorder(BorderFactory.createEmptyBorder());</b>
+&nbsp;
+<b class="nc">&nbsp;        topLeft2.add(fieldCurrency1);</b>
+&nbsp;
+<b class="nc">&nbsp;        topLeft.add(topLeft1);</b>
+<b class="nc">&nbsp;        topLeft.add(topLeft2);</b>
+&nbsp;
+&nbsp;        // CONTENT TOP - MIDDLE
+<b class="nc">&nbsp;        JButton bSwitch = Main.gui.getButtonTemplate(&quot;Switch&quot;);</b>
+<b class="nc">&nbsp;        bSwitch.addActionListener(new bSwitchListener());</b>
+<b class="nc">&nbsp;        bSwitch.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));</b>
+<b class="nc">&nbsp;        bSwitch.setPreferredSize(new Dimension(contentWidth/2,contentHeight));</b>
+&nbsp;
+&nbsp;        // CONTENT TOP - RIGHT
+<b class="nc">&nbsp;        JPanel topRight = new JPanel();</b>
+<b class="nc">&nbsp;        topRight.setLayout(new BoxLayout(topRight, BoxLayout.Y_AXIS));</b>
+<b class="nc">&nbsp;        topRight.setPreferredSize(new Dimension(contentWidth, contentHeight));</b>
+<b class="nc">&nbsp;        topRight.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));</b>
+&nbsp;
+<b class="nc">&nbsp;        JPanel topRight1 = new JPanel();</b>
+<b class="nc">&nbsp;        topRight1.setLayout(new BorderLayout());</b>
+&nbsp;
+<b class="nc">&nbsp;        buttonCurrency2 = Main.gui.getButtonTemplate(&quot;&quot;);</b>
+<b class="nc">&nbsp;        buttonCurrency2.addActionListener(new buttonCurrencyListener(2));</b>
+<b class="nc">&nbsp;        buttonCurrency2.setBorder(BorderFactory.createEmptyBorder());</b>
+&nbsp;
+<b class="nc">&nbsp;        topRight1.add(buttonCurrency2);</b>
+&nbsp;
+<b class="nc">&nbsp;        JPanel topRight2 = new JPanel();</b>
+<b class="nc">&nbsp;        topRight2.setLayout(new BoxLayout(topRight2, BoxLayout.Y_AXIS));</b>
+&nbsp;
+<b class="nc">&nbsp;        fieldCurrency2 = new JTextField(&quot;&quot;);</b>
+<b class="nc">&nbsp;        fieldCurrency2.setHorizontalAlignment(JTextField.CENTER);</b>
+<b class="nc">&nbsp;        fieldCurrency2.setMinimumSize(new Dimension(contentWidth, contentHeight/2));</b>
+<b class="nc">&nbsp;        fieldCurrency2.setMaximumSize(new Dimension(contentWidth, contentHeight/2));</b>
+<b class="nc">&nbsp;        fieldCurrency2.setBorder(BorderFactory.createEmptyBorder());</b>
+<b class="nc">&nbsp;        fieldCurrency2.setBackground(Color.WHITE);</b>
+<b class="nc">&nbsp;        fieldCurrency2.setEditable(false);</b>
+&nbsp;
+<b class="nc">&nbsp;        topRight2.add(fieldCurrency2);</b>
+&nbsp;
+<b class="nc">&nbsp;        topRight.add(topRight1);</b>
+<b class="nc">&nbsp;        topRight.add(topRight2);</b>
+&nbsp;
+<b class="nc">&nbsp;        contentTop.add(topLeft);</b>
+<b class="nc">&nbsp;        contentTop.add(bSwitch);</b>
+<b class="nc">&nbsp;        contentTop.add(topRight);</b>
+&nbsp;
+&nbsp;        // CONTENT BOTTOM - LEFT
+<b class="nc">&nbsp;        JPanel leftBottom = new JPanel();</b>
+<b class="nc">&nbsp;        leftBottom.setLayout(new BoxLayout(leftBottom, BoxLayout.Y_AXIS));</b>
+<b class="nc">&nbsp;        leftBottom.setPreferredSize(new Dimension(contentWidth, contentHeight*6));</b>
+<b class="nc">&nbsp;        leftBottom.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));</b>
+&nbsp;
+<b class="nc">&nbsp;        textBox1 = new JEditorPane();</b>
+<b class="nc">&nbsp;        textBox1.setFont(textBoxFont);</b>
+<b class="nc">&nbsp;        textBox1.setEditable(false);</b>
+&nbsp;        
+<b class="nc">&nbsp;        leftBottom.add(textBox1);</b>
+&nbsp;
+&nbsp;        // CONTENT BOTTOM - MIDDLE
+<b class="nc">&nbsp;        middleBottom = new JPanel();</b>
+<b class="nc">&nbsp;        middleBottom.setLayout(new BorderLayout());</b>
+<b class="nc">&nbsp;        middleBottom.setPreferredSize(bSwitch.getPreferredSize());</b>
+&nbsp;
+&nbsp;        // CONTENT BOTTOM - RIGHT
+<b class="nc">&nbsp;        JPanel rightBottom = new JPanel();</b>
+<b class="nc">&nbsp;        rightBottom.setLayout(new BoxLayout(rightBottom, BoxLayout.Y_AXIS));</b>
+<b class="nc">&nbsp;        rightBottom.setPreferredSize(new Dimension(contentWidth, contentHeight*6));</b>
+<b class="nc">&nbsp;        rightBottom.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.LIGHT_GRAY));</b>
+&nbsp;
+<b class="nc">&nbsp;        textBox2 = new JEditorPane();</b>
+<b class="nc">&nbsp;        textBox2.setFont(textBoxFont);</b>
+<b class="nc">&nbsp;        textBox2.setEditable(false);</b>
+&nbsp;
+<b class="nc">&nbsp;        rightBottom.add(textBox2);</b>
+&nbsp;
+<b class="nc">&nbsp;        contentBottom.add(leftBottom);</b>
+<b class="nc">&nbsp;        contentBottom.add(middleBottom);</b>
+<b class="nc">&nbsp;        contentBottom.add(rightBottom);</b>
+&nbsp;
+&nbsp;        // currencyField1
+<b class="nc">&nbsp;        fieldCurrency1.getDocument().addDocumentListener(new DocumentListener() {</b>
+&nbsp;            public void insertUpdate(DocumentEvent e) {
+&nbsp;                Double docText;
+&nbsp;                try { 
+<b class="nc">&nbsp;                    docText = Double.parseDouble(fieldCurrency1.getText());</b>
+&nbsp;                } catch(Exception ex) {
+<b class="nc">&nbsp;                    docText = null;</b>
+&nbsp;                }
+&nbsp;
+<b class="nc">&nbsp;                if (docText == null) {</b>
+<b class="nc">&nbsp;                    fieldCurrency2.setText(&quot;&quot;);</b>
+&nbsp;                } else {
+<b class="nc">&nbsp;                    fieldCurrency2.setText(calculateCurrency(docText));</b>
+&nbsp;                }
+&nbsp;
+<b class="nc">&nbsp;                serialize();</b>
+&nbsp;            }
+&nbsp;
+&nbsp;            public void removeUpdate(DocumentEvent e) {
+&nbsp;                Double docText;
+&nbsp;                try { 
+<b class="nc">&nbsp;                    docText = Double.parseDouble(fieldCurrency1.getText());</b>
+&nbsp;                } catch(Exception ex) {
+<b class="nc">&nbsp;                    docText = null;</b>
+&nbsp;                }
+&nbsp;
+<b class="nc">&nbsp;                if (docText == null) {</b>
+<b class="nc">&nbsp;                    fieldCurrency2.setText(&quot;&quot;);</b>
+&nbsp;                } else {
+<b class="nc">&nbsp;                    fieldCurrency2.setText(calculateCurrency(docText));</b>
+&nbsp;                }
+&nbsp;
+<b class="nc">&nbsp;                serialize();</b>
+&nbsp;            }
+&nbsp;
+&nbsp;            public void changedUpdate(DocumentEvent e) {
+<b class="nc">&nbsp;                throw new UnsupportedOperationException(&quot;Not supported yet.&quot;); // to change body of generated methods, choose Tools | Templates.</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;
+&nbsp;        // TOP HEADER
+<b class="nc">&nbsp;        JPanel headerTop = new JPanel();</b>
+<b class="nc">&nbsp;        headerTop.setBackground(Color.GRAY);</b>
+<b class="nc">&nbsp;        headerTop.setLayout(new BoxLayout(headerTop, BoxLayout.X_AXIS));</b>
+&nbsp;
+&nbsp;        // BUTTONS HEADER
+<b class="nc">&nbsp;        JPanel headerButtons = new JPanel();</b>
+<b class="nc">&nbsp;        headerButtons.setLayout(new BoxLayout(headerButtons, BoxLayout.X_AXIS));</b>
+<b class="nc">&nbsp;        headerButtons.setPreferredSize(new Dimension(Main.panelWidth*amountHeaderButtons, Main.panelHeight-1));</b>
+&nbsp;
+<b class="nc">&nbsp;        JButton bRefresh = Main.gui.getButtonTemplate(&quot;Refresh&quot;);</b>
+<b class="nc">&nbsp;        bRefresh.addActionListener(new bRefreshListener());</b>
+<b class="nc">&nbsp;        bRefresh.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1, Color.LIGHT_GRAY));</b>
+<b class="nc">&nbsp;        bRefresh.setMaximumSize(new Dimension(Main.panelWidth, Main.panelHeight+1));</b>
+&nbsp;
+<b class="nc">&nbsp;        JButton bGlobal = Main.gui.getButtonTemplate(&quot;Global Data&quot;);</b>
+<b class="nc">&nbsp;        bGlobal.addActionListener(new bGlobalListener());</b>
+<b class="nc">&nbsp;        bGlobal.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.LIGHT_GRAY));</b>
+<b class="nc">&nbsp;        bGlobal.setMaximumSize(new Dimension(Main.panelWidth, Main.panelHeight+1));</b>
+&nbsp;
+<b class="nc">&nbsp;        headerButtons.add(bRefresh);</b>
+<b class="nc">&nbsp;        headerButtons.add(bGlobal);</b>
+&nbsp;
+&nbsp;        // HEADER FILLING
+<b class="nc">&nbsp;        JPanel headerFilling = new JPanel();</b>
+<b class="nc">&nbsp;        headerFilling.setLayout(new BorderLayout());</b>
+<b class="nc">&nbsp;        headerFilling.setMaximumSize(new Dimension((int) Main.screenResolution.getWidth(), Main.panelHeight-1));</b>
+<b class="nc">&nbsp;        headerFilling.setBackground(Color.GRAY);</b>
+&nbsp;
+<b class="nc">&nbsp;        themeSwitch(); // select theme color</b>
+&nbsp;
+<b class="nc">&nbsp;        headerTop.add(headerButtons);</b>
+<b class="nc">&nbsp;        headerTop.add(headerFilling);</b>
+&nbsp;
+<b class="nc">&nbsp;        panel.add(headerTop);</b>
+<b class="nc">&nbsp;        panel.add(overview);</b>
+<b class="nc">&nbsp;        panel.add(contentFilling1);</b>
+<b class="nc">&nbsp;        panel.add(contentTop);</b>
+<b class="nc">&nbsp;        panel.add(contentBottom);</b>
+<b class="nc">&nbsp;        panel.add(contentFilling2);</b>
+&nbsp;
+<b class="nc">&nbsp;        deserialize();</b>
+<b class="nc">&nbsp;        retrieveText(1, infoCurrency1);</b>
+<b class="nc">&nbsp;        retrieveText(2, infoCurrency2);</b>
+&nbsp;    }
+&nbsp;    
+&nbsp;    public void reCreate() {
+<b class="nc">&nbsp;        calculateGlobal();</b>
+&nbsp;
+<b class="nc">&nbsp;        for (int i = 0; i &lt; Main.gui.webData.coin.size(); ++i) {</b>
+<b class="nc">&nbsp;            if (Main.gui.webData.coin.get(i).name.equals(buttonCurrency1.getText())) {</b>
+<b class="nc">&nbsp;                priceCurrency1 = Main.gui.webData.coin.get(i).price;</b>
+<b class="nc">&nbsp;                retrieveText(1, Main.gui.webData.coin.get(i).getInfo());</b>
+&nbsp;                break;
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        if (priceCurrency2 != 0) for (int i = 0; i &lt; Main.gui.webData.coin.size(); ++i) {</b>
+<b class="nc">&nbsp;            if (Main.gui.webData.coin.get(i).name.equals(buttonCurrency2.getText())) {</b>
+<b class="nc">&nbsp;                priceCurrency2 = Main.gui.webData.coin.get(i).price;</b>
+<b class="nc">&nbsp;                retrieveText(2, Main.gui.webData.coin.get(i).getInfo());</b>
+&nbsp;                break;
+&nbsp;            }
+&nbsp;        }
+&nbsp;        else { // priceCurrency2 is 0, it&#39;s value is Main.currency
+<b class="nc">&nbsp;            buttonCurrency2.setText(Main.currency);</b>
+<b class="nc">&nbsp;            fieldCurrency1.setText(fieldCurrency1.getText()); // invoke documentlistener on currency change</b>
+<b class="nc">&nbsp;            retrieveText(2, &quot;&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        fieldCurrency1.setText(fieldCurrency1.getText());</b>
+<b class="nc">&nbsp;        Main.frame.getContentPane().revalidate();</b>
+<b class="nc">&nbsp;        Main.frame.getContentPane().repaint();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void retrieveText(int box, String info) {
+&nbsp;        //Debug.log(&quot;Retrieving Box &quot;+box);
+&nbsp;
+<b class="nc">&nbsp;        switch (box) {</b>
+&nbsp;            case 1:
+<b class="nc">&nbsp;                infoCurrency1 = info;</b>
+<b class="nc">&nbsp;                textBox1.setText(infoCurrency1);</b>
+&nbsp;                break;
+&nbsp;            case 2:
+<b class="nc">&nbsp;                infoCurrency2 = info;</b>
+<b class="nc">&nbsp;                textBox2.setText(infoCurrency2);</b>
+&nbsp;                break;
+&nbsp;            default:
+<b class="nc">&nbsp;                Debug.log(&quot;incorrect case - PanelConverter.java retrieveText()&quot;);</b>
+<b class="nc">&nbsp;                System.exit(0);</b>
+&nbsp;                break;
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    private String calculateCurrency(double x) {
+<b class="nc">&nbsp;        Double returnValue = 0.0;</b>
+<b class="nc">&nbsp;        String returnString = &quot;&quot;;</b>
+&nbsp;
+<b class="nc">&nbsp;        if (priceCurrency2 == 0.0 &amp;&amp; buttonCurrency2.getText().equals(Main.currency)) {</b>
+<b class="nc">&nbsp;            returnValue = priceCurrency1*x;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        else if (priceCurrency1 == 0 || priceCurrency2 == 0) {</b>
+<b class="nc">&nbsp;            return String.valueOf(0);</b>
+&nbsp;        }
+&nbsp;        else {
+<b class="nc">&nbsp;            returnValue = (priceCurrency1/priceCurrency2)*x;</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        if (returnValue &gt; 1) returnString = String.valueOf(df1.format(returnValue));</b>
+<b class="nc">&nbsp;        else if (returnValue &gt; 0.1) returnString = String.valueOf(df2.format(returnValue));</b>
+<b class="nc">&nbsp;        else if (returnValue &gt; 0.01) returnString = String.valueOf(df3.format(returnValue));</b>
+<b class="nc">&nbsp;        else if (returnValue &gt; 0.001) returnString = String.valueOf(df4.format(returnValue));</b>
+<b class="nc">&nbsp;        else if (returnValue &gt; 0.0001) returnString = String.valueOf(df5.format(returnValue));</b>
+<b class="nc">&nbsp;        else returnString = String.valueOf(df6.format(returnValue));</b>
+&nbsp;
+<b class="nc">&nbsp;        return returnString;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void calculateGlobal() {
+<b class="nc">&nbsp;        double total_market_cap = Main.gui.webData.global_data.total_market_cap;</b>
+<b class="nc">&nbsp;        double total_24h_volume = Main.gui.webData.global_data.total_24h_volume;</b>
+<b class="nc">&nbsp;        double bitcoin_percentage = Main.gui.webData.global_data.bitcoin_percentage_of_market_cap;</b>
+&nbsp;        
+<b class="nc">&nbsp;        DecimalFormat htmlFormat = new DecimalFormat(&quot;#,###.##&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        String htmlFont = &quot;&lt;font color=\&quot;rgb(&quot;+Main.theme.foreground.getRed()+&quot;, &quot;+Main.theme.foreground.getGreen()+&quot;, &quot;+Main.theme.foreground.getBlue()+&quot;)\&quot;&gt;&quot;;</b>
+<b class="nc">&nbsp;        String htmlGreen = &quot;&lt;font color=\&quot;rgb(&quot;+Main.theme.green.getRed()+&quot;, &quot;+Main.theme.green.getGreen()+&quot;, &quot;+Main.theme.green.getBlue()+&quot;)\&quot;&gt;&quot;;</b>
+&nbsp;
+<b class="nc">&nbsp;        String htmlOverview = htmlFont+&quot;&lt;font size=\&quot;6\&quot;&gt;&lt;font face=\&quot;helvetica\&quot;&gt;&quot;+&quot;&lt;center&gt;&quot;</b>
+<b class="nc">&nbsp;        +&quot;{ &quot;+htmlFormat.format(total_market_cap)+&quot; }&lt;br&gt;&quot;</b>
+<b class="nc">&nbsp;        +&quot;&lt;font size=\&quot;4\&quot;&gt;&lt;b&gt;24 Hour Volume: &quot;+htmlGreen+htmlFormat.format(total_24h_volume)+htmlFont+&quot;&lt;br&gt;&quot;</b>
+&nbsp;        +&quot;Bitcoin Dominance: &quot;+htmlGreen+bitcoin_percentage+&quot;%&quot;+htmlFont+&quot;&lt;/b&gt;&lt;/center&gt;&quot;;
+&nbsp;
+&nbsp;        // set text
+<b class="nc">&nbsp;        if (overviewText != null) {</b>
+<b class="nc">&nbsp;            overviewText.setText(htmlOverview);</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            overviewText = new JEditorPane(&quot;text/html&quot;, htmlOverview);</b>
+<b class="nc">&nbsp;            overviewText.setEditable(false);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void themeSwitch() {
+<b class="nc">&nbsp;        overview.setBackground(Main.theme.background);</b>
+<b class="nc">&nbsp;        overviewText.setBackground(Main.theme.background);</b>
+<b class="nc">&nbsp;        overviewText.setForeground(Main.theme.foreground);</b>
+&nbsp;
+<b class="nc">&nbsp;        fieldCurrency1.setBackground(Main.theme.background);</b>
+<b class="nc">&nbsp;        fieldCurrency1.setForeground(Main.theme.foreground);</b>
+<b class="nc">&nbsp;        fieldCurrency2.setBackground(Main.theme.background);</b>
+<b class="nc">&nbsp;        fieldCurrency2.setForeground(Main.theme.foreground);</b>
+&nbsp;
+<b class="nc">&nbsp;        textBox1.setBackground(Main.theme.background);</b>
+<b class="nc">&nbsp;        textBox1.setForeground(Main.theme.foreground);</b>
+<b class="nc">&nbsp;        textBox2.setBackground(Main.theme.background);</b>
+<b class="nc">&nbsp;        textBox2.setForeground(Main.theme.foreground);</b>
+&nbsp;
+<b class="nc">&nbsp;        contentFilling1.setBackground(Main.theme.emptyBackground);</b>
+<b class="nc">&nbsp;        contentFilling2.setBackground(Main.theme.emptyBackground);</b>
+<b class="nc">&nbsp;        contentTop.setBackground(Main.theme.emptyBackground);</b>
+<b class="nc">&nbsp;        contentBottom.setBackground(Main.theme.emptyBackground);</b>
+<b class="nc">&nbsp;        middleBottom.setBackground(Main.theme.emptyBackground);</b>
+&nbsp;
+<b class="nc">&nbsp;        calculateGlobal();</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    private class bRefreshListener implements ActionListener {</b>
+&nbsp;        public void actionPerformed(ActionEvent e) {
+<b class="nc">&nbsp;            Debug.log(&quot;Button Refresh Clicked&quot;);</b>
+<b class="nc">&nbsp;            new WebData.RefreshCoins();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    private class bGlobalListener implements ActionListener {</b>
+&nbsp;        public void actionPerformed(ActionEvent e) {
+<b class="nc">&nbsp;            Debug.log(&quot;Button Global Clicked&quot;);</b>
+<b class="nc">&nbsp;            JOptionPane.showMessageDialog(Main.frame, Main.gui.webData.global_data.toString(), &quot;Global&quot;, JOptionPane.PLAIN_MESSAGE);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;    
+&nbsp;    private class buttonCurrencyListener implements ActionListener {
+&nbsp;        private int nr;
+&nbsp;
+<b class="nc">&nbsp;        public buttonCurrencyListener(int nr) {</b>
+<b class="nc">&nbsp;            this.nr = nr;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public void actionPerformed(ActionEvent e) {
+<b class="nc">&nbsp;            Debug.log(&quot;Button Convert Currency &quot;+nr+&quot; Clicked&quot;);</b>
+&nbsp;            int convertSelection;
+&nbsp;
+<b class="nc">&nbsp;            if (nr == 2) {</b>
+<b class="nc">&nbsp;                Object[] convertSelectionOptions = { &quot;Cryptocurrency&quot;, &quot;Current currency (&quot;+Main.currency+&quot;)&quot;};</b>
+<b class="nc">&nbsp;                convertSelection = JOptionPane.showOptionDialog(Main.frame, &quot;Select one of the options&quot;, &quot;Selection&quot;, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, convertSelectionOptions, convertSelectionOptions[1]);</b>
+<b class="nc">&nbsp;                Debug.log(&quot;-- menu selection &quot; +convertSelection);</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                convertSelection = 0;</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            switch (convertSelection) {</b>
+&nbsp;                case 0:
+<b class="nc">&nbsp;                    Object[] options = Main.gui.webData.coin.toArray();</b>
+&nbsp;
+<b class="nc">&nbsp;                    Object selectedValue = JOptionPane.showInputDialog(Main.frame, &quot;Select cryptocurrency to add&quot;, &quot;Add To Portfolio&quot;, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);</b>
+<b class="nc">&nbsp;                    if (selectedValue == null) {</b>
+<b class="nc">&nbsp;                        Debug.log(&quot;-- cancel&quot;);</b>
+&nbsp;                        return;
+&nbsp;                    } else {
+<b class="nc">&nbsp;                        Debug.log(&quot;-- &quot;+selectedValue);</b>
+&nbsp;                    }
+&nbsp;    
+<b class="nc">&nbsp;                    if (nr == 1) {</b>
+<b class="nc">&nbsp;                        buttonCurrency1.setText(selectedValue.toString());</b>
+<b class="nc">&nbsp;                        for (int i = 0; i &lt; Main.gui.webData.coin.size(); ++i) {</b>
+<b class="nc">&nbsp;                            if (Main.gui.webData.coin.get(i).name.equals(selectedValue.toString())) {</b>
+<b class="nc">&nbsp;                                priceCurrency1 = Main.gui.webData.coin.get(i).price;</b>
+<b class="nc">&nbsp;                                retrieveText(1, Main.gui.webData.coin.get(i).getInfo());</b>
+&nbsp;                                break;
+&nbsp;                            }
+&nbsp;                        }
+<b class="nc">&nbsp;                    } else if (nr == 2) {</b>
+<b class="nc">&nbsp;                        buttonCurrency2.setText(selectedValue.toString());</b>
+<b class="nc">&nbsp;                        for (int i = 0; i &lt; Main.gui.webData.coin.size(); ++i) {</b>
+<b class="nc">&nbsp;                            if (Main.gui.webData.coin.get(i).name.equals(selectedValue.toString())) {</b>
+<b class="nc">&nbsp;                                priceCurrency2 = Main.gui.webData.coin.get(i).price;</b>
+<b class="nc">&nbsp;                                retrieveText(2, Main.gui.webData.coin.get(i).getInfo());</b>
+&nbsp;                                break;
+&nbsp;                            }
+&nbsp;                        }
+&nbsp;                    } else {
+<b class="nc">&nbsp;                        Debug.log(&quot;EXCEPTION: incorrect nr in buttonCurrencyListener&quot;);</b>
+<b class="nc">&nbsp;                        System.exit(0);</b>
+&nbsp;                    }
+&nbsp;                    break;
+&nbsp;                case 1:
+<b class="nc">&nbsp;                    Debug.log(&quot;-- &quot; + Main.currency);</b>
+<b class="nc">&nbsp;                    priceCurrency2 = 0;</b>
+<b class="nc">&nbsp;                    buttonCurrency2.setText(Main.currency);</b>
+<b class="nc">&nbsp;                    retrieveText(2, &quot;&quot;);</b>
+&nbsp;
+&nbsp;                    break;
+&nbsp;                default:
+<b class="nc">&nbsp;                    Debug.log(&quot;-- cancel&quot;);</b>
+&nbsp;                    return;
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            fieldCurrency1.setText(fieldCurrency1.getText()); // invoke documentlistener on currency change</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    private class bSwitchListener implements ActionListener {</b>
+&nbsp;        public void actionPerformed(ActionEvent e) {
+<b class="nc">&nbsp;            Debug.log(&quot;Button Switch Clicked&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;            if (priceCurrency2 == 0 || priceCurrency1 == 0) {</b>
+<b class="nc">&nbsp;                JOptionPane.showMessageDialog(Main.frame, &quot;You must select a cryptocurrency for both fields&quot;, &quot;Select Cryptocurrencies&quot;, JOptionPane.PLAIN_MESSAGE);</b>
+&nbsp;                return;
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            String button1 = buttonCurrency1.getText();</b>
+<b class="nc">&nbsp;            String button2 = buttonCurrency2.getText();</b>
+<b class="nc">&nbsp;            String field1 = fieldCurrency1.getText();</b>
+<b class="nc">&nbsp;            String field2 = fieldCurrency2.getText();</b>
+<b class="nc">&nbsp;            Double price1 = priceCurrency1;</b>
+<b class="nc">&nbsp;            Double price2 = priceCurrency2;</b>
+<b class="nc">&nbsp;            String info1 = infoCurrency1;</b>
+<b class="nc">&nbsp;            String info2 = infoCurrency2;</b>
+&nbsp;
+<b class="nc">&nbsp;            buttonCurrency1.setText(button2);</b>
+<b class="nc">&nbsp;            buttonCurrency2.setText(button1);</b>
+<b class="nc">&nbsp;            fieldCurrency1.setText(field2);</b>
+<b class="nc">&nbsp;            fieldCurrency2.setText(field1);</b>
+<b class="nc">&nbsp;            priceCurrency1 = price2;</b>
+<b class="nc">&nbsp;            priceCurrency2 = price1;</b>
+<b class="nc">&nbsp;            retrieveText(1, info2);</b>
+<b class="nc">&nbsp;            retrieveText(2, info1);</b>
+&nbsp;            
+<b class="nc">&nbsp;            serialize();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    //@SuppressWarnings(&quot;unchecked&quot;)
+&nbsp;    private void deserialize() {
+&nbsp;        try {
+<b class="nc">&nbsp;            if (!(new File(Main.converterSerLocation).canRead())) {</b>
+<b class="nc">&nbsp;                Debug.log(&quot;ERROR: Couldn&#39;t find &quot;+Main.converterSerLocation+&quot;.. skipping&quot;);</b>
+&nbsp;                // default settings if none exists
+<b class="nc">&nbsp;                priceCurrency1 = Main.gui.webData.coin.get(0).price;</b>
+<b class="nc">&nbsp;                priceCurrency2 = Main.gui.webData.coin.get(1).price;</b>
+<b class="nc">&nbsp;                buttonCurrency1.setText(Main.gui.webData.coin.get(0).toString());</b>
+<b class="nc">&nbsp;                buttonCurrency2.setText(Main.gui.webData.coin.get(1).toString());</b>
+<b class="nc">&nbsp;                retrieveText(1, Main.gui.webData.coin.get(0).getInfo());</b>
+<b class="nc">&nbsp;                retrieveText(2, Main.gui.webData.coin.get(1).getInfo());</b>
+&nbsp;                return;
+&nbsp;            }
+<b class="nc">&nbsp;            FileInputStream file = new FileInputStream(Main.converterSerLocation);</b>
+<b class="nc">&nbsp;            BufferedInputStream buffer = new BufferedInputStream(file);</b>
+<b class="nc">&nbsp;            ObjectInputStream in = new ObjectInputStream(buffer);</b>
+&nbsp;
+<b class="nc">&nbsp;            buttonCurrency1.setText((String) in.readObject());</b>
+<b class="nc">&nbsp;            buttonCurrency2.setText((String) in.readObject());</b>
+<b class="nc">&nbsp;            fieldCurrency1.setText((String) in.readObject());</b>
+<b class="nc">&nbsp;            fieldCurrency2.setText((String) in.readObject());</b>
+<b class="nc">&nbsp;            priceCurrency1 = (Double) in.readObject();</b>
+<b class="nc">&nbsp;            priceCurrency2 = (Double) in.readObject();</b>
+<b class="nc">&nbsp;            infoCurrency1 = (String) in.readObject();</b>
+<b class="nc">&nbsp;            infoCurrency2 = (String) in.readObject();</b>
+&nbsp;            in.close();
+<b class="nc">&nbsp;            Debug.log(&quot;Deserialized Converter From &quot; + Main.converterSerLocation);</b>
+&nbsp;        } catch(Exception ex) {
+<b class="nc">&nbsp;            Debug.log(&quot;ERROR: PanelConverter.deserialize(), deleting &quot; + Main.converterSerLocation);</b>
+<b class="nc">&nbsp;            File deleteFile = new File(Main.converterSerLocation);</b>
+<b class="nc">&nbsp;            deleteFile.delete();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    private void serialize() {
+&nbsp;        try {
+<b class="nc">&nbsp;            if ((priceCurrency1 == 0 || priceCurrency2 == 0) &amp;&amp; (!buttonCurrency2.getText().equals(Main.currency))) return;</b>
+&nbsp;
+<b class="nc">&nbsp;            FileOutputStream file = new FileOutputStream(Main.converterSerLocation);</b>
+<b class="nc">&nbsp;            BufferedOutputStream buffer = new BufferedOutputStream(file);</b>
+<b class="nc">&nbsp;            ObjectOutputStream out = new ObjectOutputStream(buffer);</b>
+<b class="nc">&nbsp;            out.writeObject(buttonCurrency1.getText());</b>
+<b class="nc">&nbsp;            out.writeObject(buttonCurrency2.getText());</b>
+<b class="nc">&nbsp;            out.writeObject(fieldCurrency1.getText());</b>
+<b class="nc">&nbsp;            out.writeObject(fieldCurrency2.getText());</b>
+<b class="nc">&nbsp;            out.writeObject(priceCurrency1);</b>
+<b class="nc">&nbsp;            out.writeObject(priceCurrency2);</b>
+<b class="nc">&nbsp;            out.writeObject(infoCurrency1);</b>
+<b class="nc">&nbsp;            out.writeObject(infoCurrency2);</b>
+&nbsp;            out.close();
+&nbsp;            //Debug.log(&quot;Serialized Converter To &quot; + Main.converterSerLocation); // too noisy
+&nbsp;        } catch(Exception ex) {
+<b class="nc">&nbsp;            Debug.log(&quot;EXCEPTION: PanelConverter.java - serialize()&quot;);</b>
+<b class="nc">&nbsp;            ex.printStackTrace();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-12-05 11:30</div>
+</div>
+</body>
+</html>

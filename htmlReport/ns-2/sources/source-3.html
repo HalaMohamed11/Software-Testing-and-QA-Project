@@ -1,0 +1,339 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Menu</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.cryptochecker</a>
+</div>
+
+<h1>Coverage Summary for Class: Menu (com.cryptochecker)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Menu</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/40)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Menu$1</td>
+  </tr>
+  <tr>
+    <td class="name">Menu$bCoinListener</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">Menu$bConverterListener</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">Menu$bExitListener</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">Menu$bPortfolioListener</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">Menu$bSettingsListener</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/73)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.cryptochecker;
+&nbsp;
+&nbsp;import java.awt.*;
+&nbsp;import java.awt.event.*; // events when interacting with components, such as buttons
+&nbsp;import javax.swing.*;
+&nbsp;import javax.swing.border.Border;
+&nbsp;
+&nbsp;public class Menu {
+&nbsp;    public JPanel panel;
+&nbsp;    
+<b class="nc">&nbsp;    private final int topButtons = 3;</b>
+<b class="nc">&nbsp;    private final int bottomButtons = 2;</b>
+&nbsp;
+<b class="nc">&nbsp;    private final Border borderButtonTop = BorderFactory.createMatteBorder(0, 0, 1, 0, Color.LIGHT_GRAY);</b>
+<b class="nc">&nbsp;    private final Border borderButtonBottom = BorderFactory.createMatteBorder(1, 0, 0, 0, Color.LIGHT_GRAY);</b>
+&nbsp;
+<b class="nc">&nbsp;    public Menu() {</b>
+&nbsp;        // buttons top
+<b class="nc">&nbsp;        JButton bCoin = Main.gui.getButtonTemplate(&quot;Coin Data&quot;);</b>
+<b class="nc">&nbsp;        bCoin.addActionListener(new bCoinListener());</b>
+<b class="nc">&nbsp;        bCoin.setBorder(borderButtonTop);</b>
+&nbsp;
+<b class="nc">&nbsp;        JButton bPortfolio = Main.gui.getButtonTemplate(&quot;Portfolio&quot;);</b>
+<b class="nc">&nbsp;        bPortfolio.addActionListener(new bPortfolioListener());</b>
+<b class="nc">&nbsp;        bPortfolio.setBorder(borderButtonTop);</b>
+&nbsp;
+<b class="nc">&nbsp;        JButton bConverter = Main.gui.getButtonTemplate(&quot;Converter&quot;);</b>
+<b class="nc">&nbsp;        bConverter.addActionListener(new bConverterListener());</b>
+<b class="nc">&nbsp;        bConverter.setBorder(borderButtonTop);</b>
+&nbsp;
+&nbsp;        // buttons bottom
+<b class="nc">&nbsp;        JButton bSettings = Main.gui.getButtonTemplate(&quot;Settings&quot;);</b>
+<b class="nc">&nbsp;        bSettings.addActionListener(new bSettingsListener());</b>
+<b class="nc">&nbsp;        bSettings.setBorder(borderButtonBottom);</b>
+&nbsp;
+<b class="nc">&nbsp;        JButton bExit = Main.gui.getButtonTemplate(&quot;Exit&quot;);</b>
+<b class="nc">&nbsp;        bExit.addActionListener(new bExitListener());</b>
+<b class="nc">&nbsp;        bExit.setBorder(borderButtonBottom);</b>
+&nbsp;        
+&nbsp;        // Menu Layout
+<b class="nc">&nbsp;        panel = new JPanel();</b>
+<b class="nc">&nbsp;        panel.setBackground(Color.GRAY);</b>
+<b class="nc">&nbsp;        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));</b>
+&nbsp;
+&nbsp;        // Button Panel 1
+<b class="nc">&nbsp;        JPanel button1Panel = new JPanel();</b>
+<b class="nc">&nbsp;        button1Panel.setLayout(new BoxLayout(button1Panel, BoxLayout.Y_AXIS));</b>
+<b class="nc">&nbsp;        button1Panel.setPreferredSize(new Dimension(Main.panelWidth,(topButtons*Main.panelHeight))); // buttons * 30 = height for button1Panel</b>
+<b class="nc">&nbsp;        button1Panel.add(bCoin);</b>
+<b class="nc">&nbsp;        button1Panel.add(bPortfolio);</b>
+<b class="nc">&nbsp;        button1Panel.add(bConverter);</b>
+&nbsp;
+&nbsp;        // Button Panel X
+<b class="nc">&nbsp;        JPanel buttonXPanel = new JPanel();</b>
+<b class="nc">&nbsp;        buttonXPanel.setLayout(new BorderLayout());</b>
+<b class="nc">&nbsp;        buttonXPanel.setBackground(Color.GRAY);</b>
+&nbsp;
+&nbsp;        // Button Panel 2
+<b class="nc">&nbsp;        JPanel button2Panel = new JPanel();</b>
+<b class="nc">&nbsp;        button2Panel.setLayout(new BoxLayout(button2Panel, BoxLayout.Y_AXIS));</b>
+<b class="nc">&nbsp;        button2Panel.setPreferredSize(new Dimension(Main.panelWidth,(bottomButtons*Main.panelHeight))); // buttons * 30 = height for button2Panel</b>
+<b class="nc">&nbsp;        button2Panel.add(bSettings);</b>
+<b class="nc">&nbsp;        button2Panel.add(bExit);</b>
+&nbsp;
+<b class="nc">&nbsp;        panel.add(button1Panel);</b>
+<b class="nc">&nbsp;        panel.add(buttonXPanel); // Divide panel 1 with panel 2</b>
+<b class="nc">&nbsp;        panel.add(button2Panel);</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    private class bCoinListener implements ActionListener {</b>
+&nbsp;        public void actionPerformed(ActionEvent e) {
+<b class="nc">&nbsp;            Debug.log(&quot;Page Coin Clicked&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;            Main.frame.getContentPane().add(BorderLayout.CENTER, Main.gui.panelCoin.panel);</b>
+&nbsp;
+<b class="nc">&nbsp;            Main.gui.panelCoin.panel.setVisible(true);</b>
+<b class="nc">&nbsp;            Main.gui.panelPortfolio.panel.setVisible(false);</b>
+<b class="nc">&nbsp;            Main.gui.panelConverter.panel.setVisible(false);</b>
+<b class="nc">&nbsp;            Main.gui.panelSettings.panel.setVisible(false);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    private class bPortfolioListener implements ActionListener {</b>
+&nbsp;        public void actionPerformed(ActionEvent e) {
+<b class="nc">&nbsp;            Debug.log(&quot;Page Portfolio Pressed&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;            Main.frame.getContentPane().add(BorderLayout.CENTER, Main.gui.panelPortfolio.panel);</b>
+&nbsp;
+<b class="nc">&nbsp;            Main.gui.panelCoin.panel.setVisible(false);</b>
+<b class="nc">&nbsp;            Main.gui.panelPortfolio.panel.setVisible(true);</b>
+<b class="nc">&nbsp;            Main.gui.panelConverter.panel.setVisible(false);</b>
+<b class="nc">&nbsp;            Main.gui.panelSettings.panel.setVisible(false);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    private class bConverterListener implements ActionListener {</b>
+&nbsp;        public void actionPerformed(ActionEvent e) {
+<b class="nc">&nbsp;            Debug.log(&quot;Page Converter Pressed&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;            Main.frame.getContentPane().add(BorderLayout.CENTER, Main.gui.panelConverter.panel);</b>
+&nbsp;
+<b class="nc">&nbsp;            Main.gui.panelCoin.panel.setVisible(false);</b>
+<b class="nc">&nbsp;            Main.gui.panelPortfolio.panel.setVisible(false);</b>
+<b class="nc">&nbsp;            Main.gui.panelConverter.panel.setVisible(true);</b>
+<b class="nc">&nbsp;            Main.gui.panelSettings.panel.setVisible(false);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    private class bSettingsListener implements ActionListener {</b>
+&nbsp;        public void actionPerformed(ActionEvent e) {
+<b class="nc">&nbsp;            Debug.log(&quot;Page Settings Pressed&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;            Main.frame.getContentPane().add(BorderLayout.CENTER, Main.gui.panelSettings.panel);</b>
+&nbsp;
+<b class="nc">&nbsp;            Main.gui.panelCoin.panel.setVisible(false);</b>
+<b class="nc">&nbsp;            Main.gui.panelPortfolio.panel.setVisible(false);</b>
+<b class="nc">&nbsp;            Main.gui.panelConverter.panel.setVisible(false);</b>
+<b class="nc">&nbsp;            Main.gui.panelSettings.panel.setVisible(true);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    private class bExitListener implements ActionListener {</b>
+&nbsp;        public void actionPerformed(ActionEvent e) {
+<b class="nc">&nbsp;            Debug.log(&quot;Button Exit Pressed&quot;);</b>
+<b class="nc">&nbsp;            Debug.log(&quot;-- Shutting down..&quot;);</b>
+<b class="nc">&nbsp;            Main.frame.setVisible(false);</b>
+<b class="nc">&nbsp;            System.exit(0);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-12-05 11:30</div>
+</div>
+</body>
+</html>
