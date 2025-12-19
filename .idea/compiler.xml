@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="crypto-checker" />
+        <module name="Software-Testing-and-QA-Project" />
       </profile>
     </annotationProcessing>
   </component>

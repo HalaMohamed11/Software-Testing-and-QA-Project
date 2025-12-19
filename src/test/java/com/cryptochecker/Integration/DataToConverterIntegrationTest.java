@@ -1,4 +1,4 @@
-package com.cryptochecker.integration;
+package com.cryptochecker.Integration;
 
 import com.cryptochecker.WebData;
 import com.cryptochecker.ConversionUtil;
@@ -15,11 +15,10 @@ public class DataToConverterIntegrationTest {
     private ConversionUtil converter;
     
     @BeforeEach
-    void setUp() {
+    void setUp() throws Exception {
         webData = new WebData();
         converter = new ConversionUtil();
     }
-    
     @Test
     @DisplayName("INT-005: Data retrieval and conversion pipeline")
     void testDataToConversionPipeline() {

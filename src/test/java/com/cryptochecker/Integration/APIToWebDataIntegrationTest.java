@@ -1,6 +1,6 @@
-package com.cryptochecker.integration;
+package com.cryptochecker.Integration;
 
-import com.cryptochecker.APIService;
+
 import com.cryptochecker.APIException;
 import com.cryptochecker.WebData;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,11 +12,11 @@ import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("Integration Test: APIService -> WebData")
 public class APIToWebDataIntegrationTest {
     
-    private APIService apiService;
+    private com.cryptochecker.Integration.APIService apiService;
     private WebData webData;
     
     @BeforeEach
-    void setUp() {
+    void setUp() throws Exception {
         apiService = new APIService();
         webData = new WebData();
     }

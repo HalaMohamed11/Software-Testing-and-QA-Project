@@ -1,4 +1,4 @@
-package com.cryptochecker.integration;
+package com.cryptochecker.Integration;
 
 import com.cryptochecker.SearchUtil;
 import com.cryptochecker.WebData;
@@ -13,13 +13,12 @@ public class SearchToDataIntegrationTest {
     
     private SearchUtil searchUtil;
     private WebData webData;
-    
+
     @BeforeEach
-    void setUp() {
+    void setUp() throws Exception {
         searchUtil = new SearchUtil();
         webData = new WebData();
     }
-    
     @Test
     @DisplayName("INT-010: Search returns valid result for data lookup")
     void testSearchReturnsValidResult() {
